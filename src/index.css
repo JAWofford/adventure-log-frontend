@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  /* color */
+  --pine:        #2F5D4F;
+  --pine-dark:   #1F4438;
+  --highway:     #E8552B;
+  --highway-dark:#C7431F;
+  --denim:       #3E7CA6;
+  --mustard:     #E8A93A;
+  --cream:       #EAF0E6;
+  --card:        #FFFDF6;
+  --ink:         #24312A;
+  --ink-soft:    #5B6B5F;
+  --line:        #C9D3C3;
+
+  /* type */
+  --font-display: 'Bungee', system-ui, sans-serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* scale */
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 4px 0 rgba(36,49,42,0.08), 0 8px 20px rgba(36,49,42,0.06);
+}
+
+body {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+
+#root {
+  
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+
+
