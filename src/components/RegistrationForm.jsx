@@ -1,15 +1,19 @@
-import {useState} from 'react'
+import {useState} from 'react';
+import { registerUser } from '../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegistrationForm() {
 
   //initialize a single state object for all the form fields
   const [formData, setFormData] =useState({
-    username: "",
+    userName: "",
     email: "",
     displayName: "",
     password: "",
     confirmPassword: "",
   })
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -20,11 +24,21 @@ export default function RegistrationForm() {
     }));
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Form Submitted Data:', formData)
-    //API call logic here??
-  }
+    if (formData.password !== formData.confirmPassword) {
+      alert("Your passwords do not match, please try again.");//TODO: Change to an error state variable.
+      return
+    }
+    const {confirmPassword, ...registrationData } = formData;
+    
+    try{
+    await registerUser(registrationData);
+    navigate('/dashboard');
+    } catch (err){
+      alert(err.message);
+    }
+    }
 
 
   return (
@@ -36,9 +50,9 @@ export default function RegistrationForm() {
           <label>Username</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="userName"
+            name="userName"
+            value={formData.userName}
             onChange={handleChange}
             required
           />
