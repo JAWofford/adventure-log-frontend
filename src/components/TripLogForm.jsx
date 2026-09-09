@@ -30,8 +30,15 @@ export default function TripLogForm() {
         event.preventDefault();
         setLogError("");
 
+        //check any null values.
+        const cleanedData = {
+            ...tripLogData,
+            startDate: (tripLogData.startDate===""? null : tripLogData.startDate),
+            endDate: (tripLogData.endDate===""? null : tripLogData.endDate)
+        }
+
         try {
-            await createLog(tripLogData);
+            await createLog(cleanedData);
             navigate('/dashboard');
         } catch (err) {
             if (err instanceof TypeError) {
@@ -92,28 +99,33 @@ export default function TripLogForm() {
                     />
                 </div>
                 <div className="reg-form-field">
-                <label>
-                    <input
-                        type="radio"
-                        name="privacy"
-                        value="public"
-                        checked={tripLogData.privacy === "public"}
-                        onChange={handleChange}
-                    />
-                    Public
-                </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="privacy"
+                            value="public"
+                            checked={tripLogData.privacy === "public"}
+                            onChange={handleChange}
+                        />
+                        Public
+                    </label>
                 </div>
                 <div>
-                <label>
-                    <input
-                        type="radio"
-                        name="privacy"
-                        value="private"
-                        checked={tripLogData.privacy === "private"}
-                        onChange={handleChange}
-                    />
-                    Private
-                </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="privacy"
+                            value="private"
+                            checked={tripLogData.privacy === "private"}
+                            onChange={handleChange}
+                        />
+                        Private
+                    </label>
+                </div>
+                <div className="submit-button">
+                    <button type="submit">
+                        Create Log
+                    </button>
                 </div>
             </form>
         </div>

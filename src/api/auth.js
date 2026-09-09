@@ -49,3 +49,24 @@ export async function logoutUser() {
         throw new Error(errorData.message || "Something went wrong");
     }
 }
+
+//checking user session
+export async function checkCurrentUser() {
+    const response = await fetch(`${BASE_URL}auth/me`, {
+        method: "GET",
+        credentials: "include"
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+    return await response.json();
+}
+
+//trigger csrf token
+export async function triggerCsrfToken() {
+    await fetch(`${BASE_URL}auth/csrf`, {
+        method: "GET",
+        credentials: "include"
+    });
+}
