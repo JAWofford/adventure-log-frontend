@@ -1,10 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { checkCurrentUser, triggerCsrfToken } from "../api/auth";
+import { checkCurrentUser, triggerCsrfToken, logoutUser } from "../api/auth";
 
 //Create the context container 
 const AuthContext = createContext();
 
-// The Provider component — wraps app, holds the actual state that can be accessed direclty by all children
+// The Provider component — wraps app in main.jsx, holds the actual state that can be accessed directly by all children
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -29,8 +29,18 @@ export function AuthProvider({ children }) {
     load();
   }, []);
 
+  const logout = async() =>{
+    try{
+      await logoutUser();
+      setUser(null)
+    } catch (err){
+      console.error('LogOutUser:', err);
+      setError(err.message);
+    }
+  };
+
     return (
-        <AuthContext.Provider value={{ user, setUser, loading, error }}>
+        <AuthContext.Provider value={{ user, setUser, loading, error, logout }}>
             {children}
         </AuthContext.Provider>
     );

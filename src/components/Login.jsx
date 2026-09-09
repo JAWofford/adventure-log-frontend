@@ -1,19 +1,18 @@
 import { useState} from 'react';
 import { loginUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
 
  //initialize a single state object for all the form fields
-      const [formData, setFormData] =useState({
+    const [formData, setFormData] = useState({
         userName: "",
         password: ""
-      })
-
-
-      const [loginError, setLoginError] = useState("");
-
-      const navigate = useNavigate();
+    })
+    const [loginError, setLoginError] = useState("");
+    const navigate = useNavigate();
+    const { setUser } = useAuth();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -28,7 +27,8 @@ export default function Login() {
     event.preventDefault();
     setLoginError("");
      try{
-        await loginUser(formData);
+        const loggedInUser = await loginUser(formData);
+        setUser(loggedInUser);
         navigate('/dashboard');
         } catch (err){
           if( err instanceof TypeError){
