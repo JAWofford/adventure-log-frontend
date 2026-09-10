@@ -25,11 +25,35 @@
   --shadow: 0 4px 0 rgba(36,49,42,0.08), 0 8px 20px rgba(36,49,42,0.06);
 }
 
-body {
-  margin: 0;
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
-p {
-  margin: 0;
+
+h1,h2,h3{ font-family:var(--font-display); font-weight:400; letter-spacing:.02em; line-height:1.15; margin:0 0 .5em; color:var(--pine-dark); }
+p{ margin:0 0 1em; color:var(--ink-soft); }
+.wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+/* ---------- dashed route divider ---------- */
+.route-divider{
+  display:flex; align-items:center; gap:14px; margin:56px 0 28px;
+  color:var(--ink-soft); font-family:var(--font-mono); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
+}
+.route-divider::before,.route-divider::after{
+  content:""; flex:1; height:0; border-top:3px dashed var(--line);
+}
+.route-divider .pin{
+  width:10px; height:10px; border-radius:50%; background:var(--highway); flex:0 0 auto;
 }
 
 #root {

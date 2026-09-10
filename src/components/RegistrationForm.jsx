@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { registerUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function RegistrationForm() {
 
@@ -12,10 +13,9 @@ export default function RegistrationForm() {
     password: "",
     confirmPassword: "",
   })
-
   const [regError, setRegError] = useState("");
-
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -56,7 +56,8 @@ export default function RegistrationForm() {
     delete registrationData.confirmPassword;
     
     try{
-    await registerUser(registrationData);
+    const registeredUser = await registerUser(registrationData);
+    setUser(registeredUser);
     navigate('/dashboard');
     } catch (err){
       if( err instanceof TypeError){

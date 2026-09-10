@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import TopNav from './components/TopNav'
+import './App.css'
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
   return (
   
   <div className="app">   
-      <h1>Adventure Log</h1>
+      
       <header className="app-header">
         <TopNav/>
 
