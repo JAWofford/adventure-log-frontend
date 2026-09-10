@@ -1,6 +1,5 @@
 
 import { BASE_URL } from "../utils/baseURL";
-import { getXsrfToken } from "../utils/csrf";
 
 
 export async function registerUser(registrationData) {
@@ -38,10 +37,9 @@ export async function loginUser(formData) {
 }
 
 export async function logoutUser() {
-    const token = getXsrfToken(document.cookie);
-    const response = await fetch(`${BASE_URL}auth/logout`, {
+        const response = await fetch(`${BASE_URL}auth/logout`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-XSRF-TOKEN": token },
+        headers: { "Content-Type": "application/json" },
         credentials: "include"
     });
 
@@ -61,12 +59,4 @@ export async function checkCurrentUser() {
         return null;
     }
     return await response.json();
-}
-
-//trigger csrf token
-export async function triggerCsrfToken() {
-    await fetch(`${BASE_URL}auth/csrf`, {
-        method: "GET",
-        credentials: "include"
-    });
 }

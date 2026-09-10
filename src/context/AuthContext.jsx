@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { checkCurrentUser, triggerCsrfToken, logoutUser } from "../api/auth";
+import { checkCurrentUser, logoutUser } from "../api/auth";
 
 //Create the context container 
 const AuthContext = createContext();
@@ -17,7 +17,6 @@ export function AuthProvider({ children }) {
         const checked = await checkCurrentUser();
         if (checked){
             setUser(checked);
-            await triggerCsrfToken();
         }
       } catch (err) {
         console.error('checkCurentUser:', err);

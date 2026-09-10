@@ -32,11 +32,12 @@
 }
 
 /* login link extra styling */
-.login {
-    background: var(--mustard);
+.app-link.login, 
+.app-button.logout{
+ background: var(--mustard);
 }
-
-.login:hover {
+.app-link.login:hover,
+.app-button.logout:hover {
      background: var(--mustard);
      color: var(--pine-dark);
 }

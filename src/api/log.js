@@ -1,12 +1,10 @@
 import { BASE_URL } from "../utils/baseURL";
-import { getXsrfToken } from "../utils/csrf";
 
 
 export async function createLog(tripLogData) {
-    const token = getXsrfToken(document.cookie);
-    const response = await fetch(`${BASE_URL}triplogs`, {
+        const response = await fetch(`${BASE_URL}triplogs`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-XSRF-TOKEN" : token},
+        headers: { "Content-Type": "application/json"},
         credentials: "include",
         body: JSON.stringify(tripLogData)
     });

@@ -4,12 +4,12 @@ import AppLink from './AppLink';
 export default function LandingPage() {
   return (
     <div>
-      <header class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow">not a trip planner, a trip scrapbook</span>
+      <header className="hero">
+  <div className="hero-inner">
+    <span className="eyebrow">not a trip planner, a trip scrapbook</span>
     <h1>Every mile, every site, <span>every story</span> — logged.</h1>
-    <p class="lead">Adventure Log is where RVers and campers keep the record: where you stayed, how you got there, and the campground worth telling a friend about.</p>
-    <div class="hero-links">
+    <p className="lead">Adventure Log is where RVers and campers keep the record: where you stayed, how you got there, and the campground worth telling a friend about.</p>
+    <div className="hero-links">
       <AppLink
         to="/dashboard"
         className="hero-button"
@@ -19,7 +19,7 @@ export default function LandingPage() {
   </div>
   </header>
   <section className="wrap features" id="features">
-    <div class="route-divider"><span class="pin"></span> what you can log <span class="pin"></span></div>
+    <div className="route-divider"><span className="pin"></span> what you can log <span className="pin"></span></div>
     <div className="feature-grid">
         <div className="feature">
             <div className="icon">🏕️</div>
