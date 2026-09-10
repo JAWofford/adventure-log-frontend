@@ -1,44 +1,44 @@
-import { Link } from "react-router-dom"
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../api/auth";
+
+import {useAuth} from "../context/AuthContext"
+import AppLink from "./AppLink";
+import Button from "./Button";
+import './TopNav.css';
+
 
 export default function TopNav() {
 
-const [logoutError, setLogoutError] = useState("");
-const navigate = useNavigate();
 
- const handleLogout = async (event) => {
-    event.preventDefault();
-    setLogoutError("");
-     try{
-        await logoutUser();
-        navigate('/');
-        } catch (err){
-          if( err instanceof TypeError){
-            setLogoutError("We couldn't connect to the server. Please try again in a moment.")
-          } else {
-          setLogoutError(err.message);
-          }
-        }
-  }
+const {user, logout} = useAuth();
+ 
 
     return (
-        <div className="nav-tabs">
-            <Link
+        <div className="topnav wrap">
+            <div className="brand">
+                <span className="mark">A</span>Adventure&nbsp;Log
+            </div>
+            <div className="nav-app-links">
+                <AppLink
+                to="/"
+                className="home"
+                label="Home" />
+                <AppLink
+                to="/dashboard"
+                className="dashboard"
+                label="Dashboard" />
+            </div>
+            
+            {!user ? (
+                <AppLink
                 to="/login"
-                className="nav-tab login" >
-                Login
-            </Link>
+                className="login"
+                label="Login" />
 
-            <button onClick={handleLogout} className="nav-tab logout">
-                Log Out
-            </button>
-            {/* this error should never really display,future update maybe create a toast if other parts of the app can use it. */}
-            {/* show registration form error here if there is one. */}
-            {logoutError && <p className="error">{logoutError}</p>}
+            ): <Button
+                className="logout"
+                onClick={logout} 
+                label="Logout"/>}
+
         </div>
-
         
     )
 }
