@@ -1,12 +1,13 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { registerUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Button from "./Button";
 
 export default function RegistrationForm() {
 
   //initialize a single state object for all the form fields
-  const [formData, setFormData] =useState({
+  const [formData, setFormData] = useState({
     userName: "",
     email: "",
     displayName: "",
@@ -18,7 +19,7 @@ export default function RegistrationForm() {
   const { setUser } = useAuth();
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
     setFormData((prevData) => ({
       ...prevData,
@@ -44,40 +45,42 @@ export default function RegistrationForm() {
 
     // Password Validation
     if (formData.password.length < 8) {
-    setRegError("Your password must be at least 8 characters.");
-    return;
-  }
+      setRegError("Your password must be at least 8 characters.");
+      return;
+    }
     if (formData.password !== formData.confirmPassword) {
       setRegError("Your passwords do not match, please try again.")
       return
     }
     //after passwords are confirmed, delete duplicate to pass to backend.
-    const registrationData = {...formData};
+    const registrationData = { ...formData };
     delete registrationData.confirmPassword;
-    
-    try{
-    const registeredUser = await registerUser(registrationData);
-    setUser(registeredUser);
-    navigate('/dashboard');
-    } catch (err){
-      if( err instanceof TypeError){
+
+    try {
+      const registeredUser = await registerUser(registrationData);
+      setUser(registeredUser);
+      navigate('/dashboard');
+    } catch (err) {
+      if (err instanceof TypeError) {
         setRegError("We couldn't connect to the server. Please try again in a moment.")
       } else {
-      setRegError(err.message);
+        setRegError(err.message);
       }
     }
   }
 
 
   return (
-    <div className="registration">
-        
-      <form onSubmit={handleSubmit} className='reg-form'>
-        <h2 className="reg-form-title">Create Your Adventure Log Account</h2>
+    <div className="wrap">
+      <div className="page-head">
+        <h1>Create Your Adventure Log Account</h1>
+      </div>
+      <form onSubmit={handleSubmit} className="form-panel">
+        <p className="required-note">* Required field</p>
         {/* show registration form error here if there is one. */}
         {regError && <p className="error">{regError}</p>}
-        <div className="reg-form-field">
-          <label>Username</label>
+        <div className="field">
+          <label>Username <span className="required">*</span></label>
           <input
             type="text"
             id="userName"
@@ -98,8 +101,8 @@ export default function RegistrationForm() {
               3–20 characters, or a valid email address. No spaces.
             </p>
           )}
-        <div className="reg-form-field">
-          <label>Display Name</label>
+        <div className="field">
+          <label>Display Name <span className="required">*</span></label>
           <input
             type="text"
             placeholder="Choose a screen name others will see"
@@ -110,8 +113,8 @@ export default function RegistrationForm() {
             required
           />
         </div>
-        <div className="reg-form-field">
-          <label>Email Address:</label>
+        <div className="field">
+          <label>Email Address: <span className="required">*</span></label>
           <input
             type="email"
             id="email"
@@ -122,8 +125,8 @@ export default function RegistrationForm() {
             autoComplete='email'
           />
         </div>
-        <div className="reg-form-field">
-          <label>Password</label>
+        <div className="field">
+          <label>Password <span className="required">*</span></label>
           <input
             type="password"
             id="password"
@@ -139,8 +142,8 @@ export default function RegistrationForm() {
         {formData.password.length > 0 && formData.password.length < 8 && (
           <p className="validate-message">Password must be at least 8 characters.</p>
         )}
-        <div className="reg-form-field">
-          <label>Confirm Your Password:</label>
+        <div className="field">
+          <label>Confirm Your Password: <span className="required">*</span></label>
           <input
             type="password"
             placeholder="retype password"
@@ -153,10 +156,11 @@ export default function RegistrationForm() {
           />
         </div>
         <div className="submit-button">
-        <button type="submit">
-        Register Now
-      </button>
-      </div>
+          <Button
+            className="submit-button-login"
+            type="submit"
+            label="Register" />
+        </div>
       </form>
     </div>
   )

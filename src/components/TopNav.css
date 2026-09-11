@@ -35,6 +35,7 @@
 .app-link.login, 
 .app-button.logout{
  background: var(--mustard);
+ color: var(--pine-dark);
 }
 .app-link.login:hover,
 .app-button.logout:hover {

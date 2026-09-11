@@ -1,12 +1,15 @@
 .app-button {
     display: inline-block;
     padding: 9px 18px;
-    background: var(--card);
+    /* background: var(--card);
+    color: var(--pine-dark); */
+    background:var(--pine); 
+    color:#fff;
     border: 2px solid var(--pine);
     border-radius: 999px;
     font-size: .86rem;
     font-weight: 600;
-    color: var(--pine-dark);
+    
     box-shadow: var(--shadow);
     transition: transform .15s ease;
     text-decoration: none;
@@ -14,6 +17,8 @@
 
 .app-button:hover {
     transform: translateY(-2px);
-    background:var(--pine); 
-    color:#fff;
+    background: var(--card);
+    color: var(--pine-dark);
+    /* background:var(--pine); 
+    color:#fff; */
 }

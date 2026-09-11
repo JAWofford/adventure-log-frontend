@@ -27,10 +27,6 @@ function App() {
       </Routes>
     </main> 
 
-    <Link to="/register">
-      <h3>Register</h3>
-    </Link>
-
   </div>  
   )
 }

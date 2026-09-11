@@ -25,7 +25,68 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-
+.page-head{ 
+  margin:44px 0 26px;
+ }
+  .page-head h1{ 
+    font-size:1.8rem; 
+    margin-bottom:4px;
+   }
+  .form-panel{
+  background:var(--card); 
+  border:2px solid var(--ink); 
+  border-radius:var(--radius-lg);
+  padding:34px; 
+  box-shadow:var(--shadow);
+}
+.field{ 
+  margin-bottom:22px;
+ }
+.field label{
+  display:block; 
+  font-family:var(--font-mono); 
+  font-size:.75rem; 
+  text-transform:uppercase;
+  letter-spacing:.06em; 
+  color:var(--pine-dark); 
+  margin-bottom:7px; 
+  font-weight:700;
+}
+input[type=text],
+input[type=date],
+input[type=number],
+input[type=password],
+input[type=email],
+select,
+textarea{
+  width:100%; 
+  padding:12px 14px; 
+  border:2px solid var(--line); 
+  border-radius:10px;
+  background:#fff; 
+  font-family:var(--font-body); 
+  font-size:.95rem; 
+  color:var(--ink);
+}
+textarea{ 
+  resize:vertical; 
+  min-height:96px; 
+}
+input:focus,select:focus,textarea:focus{ 
+  border-color:var(--denim);
+ }
+.required {
+  color: var(--highway);
+}
+.required-note {
+  font-size: .8rem;
+  margin-bottom: 20px;
+}
