@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { createLog } from "../api/log";
+import Button from "./Button";
+import './TripLogForm.css';
 
 
 export default function TripLogForm() {
@@ -33,8 +35,8 @@ export default function TripLogForm() {
         //check any null values.
         const cleanedData = {
             ...tripLogData,
-            startDate: (tripLogData.startDate===""? null : tripLogData.startDate),
-            endDate: (tripLogData.endDate===""? null : tripLogData.endDate)
+            startDate: (tripLogData.startDate === "" ? null : tripLogData.startDate),
+            endDate: (tripLogData.endDate === "" ? null : tripLogData.endDate)
         }
 
         try {
@@ -51,83 +53,98 @@ export default function TripLogForm() {
     }
 
     return (
-        <div className="trip-log">
+        <div className="wrap">
+            <div className="page-head">
+                <h1>New Trip Log</h1>
+                <p>The scrapbook version — what you'd want to remember next time you plan a trip like this one.</p>
+            </div>
+            <div className="layout">
+                <form onSubmit={handleSubmit} className="form-panel">
+                    <p className="required-note">* Required field</p>
+                    {/* show trip log form error here if there is one. */}
+                    {logError && <p className="error">{logError}</p>}
+                    <div className="field">
+                        <label>Trip Name: <span className="required">*</span></label>
+                        <input
+                            type="text"
+                            id="tripName"
+                            name="tripName"
+                            value={tripLogData.tripName}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="field-row">
+                        <div className="field">
+                            <label>Start Date:</label>
+                            <input
+                                type="date"
+                                id="startDate"
+                                name="startDate"
+                                value={tripLogData.startDate}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="field">
+                            <label>End Date:</label>
+                            <input
+                                type="date"
+                                id="endDate"
+                                name="endDate"
+                                value={tripLogData.endDate}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="privacy-section">
+                        <h1>Who Can See This <span className="required">*</span></h1>
+                        <p>Trips you mark public show up for everyone, private ones stay just for your own log.</p>
+                    <div className="privacy-field-row">
+                        <div className="field">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="privacy"
+                                    value="public"
+                                    checked={tripLogData.privacy === "public"}
+                                    onChange={handleChange}
+                                />
+                                Public
+                            </label>
+                        </div>
+                        <div className="field">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="privacy"
+                                    value="private"
+                                    checked={tripLogData.privacy === "private"}
+                                    onChange={handleChange}
+                                />
+                                Private
+                            </label>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="field">
+                        <label>Description/Notes</label>
+                        <textarea
+                            type="text"
+                            id="tripDescription"
+                            name="tripDescription"
+                            value={tripLogData.tripDescription}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-            <form onSubmit={handleSubmit} className="log-form">
-                <h2 className="log-title">Create a Trip Log</h2>
-                {/* show trip log form error here if there is one. */}
-                {logError && <p className="error">{logError}</p>}
-                <div className="log-form-field">
-                    <label>Trip Name</label>
-                    <input
-                        type="text"
-                        id="tripName"
-                        name="tripName"
-                        value={tripLogData.tripName}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>Description/Notes</label>
-                    <input
-                        type="text"
-                        id="tripDescription"
-                        name="tripDescription"
-                        value={tripLogData.tripDescription}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>Start Date:</label>
-                    <input
-                        type="date"
-                        id="startDate"
-                        name="startDate"
-                        value={tripLogData.startDate}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>End Date:</label>
-                    <input
-                        type="date"
-                        id="endDate"
-                        name="endDate"
-                        value={tripLogData.endDate}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>
-                        <input
-                            type="radio"
-                            name="privacy"
-                            value="public"
-                            checked={tripLogData.privacy === "public"}
-                            onChange={handleChange}
-                        />
-                        Public
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="privacy"
-                            value="private"
-                            checked={tripLogData.privacy === "private"}
-                            onChange={handleChange}
-                        />
-                        Private
-                    </label>
-                </div>
-                <div className="submit-button">
-                    <button type="submit">
-                        Create Log
-                    </button>
-                </div>
-            </form>
+                    <div className="submit-button">
+                        <Button
+                            className="submit-button-login"
+                            type="submit"
+                            label="Save Trip Log" />
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

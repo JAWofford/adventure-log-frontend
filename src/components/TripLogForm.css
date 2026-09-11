@@ -1,0 +1,32 @@
+.privacy-section{
+border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  background-color: var(--white);
+  margin-bottom: 20px;
+}
+.privacy-section h1{
+  display:block; 
+  font-family:var(--font-mono); 
+  font-size:.75rem; 
+  text-transform:uppercase;
+  letter-spacing:.06em; 
+  color:var(--pine-dark); 
+  margin-bottom:7px; 
+  font-weight:700;
+}
+.privacy-section p{
+    font-size: .8rem;
+  margin-bottom: 20px;
+}
+.privacy-field-row {
+display: flex;
+  gap: 20px;
+}
+
+.privacy-field-row .field {
+  margin-bottom: 0;
+}
+input[type="radio"] {
+  accent-color: var(--highway-dark);
+}

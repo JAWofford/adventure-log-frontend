@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import TopNav from './components/TopNav'
 import './App.css'
+import TripLogForm from './components/TripLogForm'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/register" element={<RegistrationForm />}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/newtriplog" element={<TripLogForm />} />
       </Routes>
     </main> 
 

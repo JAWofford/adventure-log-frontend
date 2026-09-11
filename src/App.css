@@ -33,6 +33,7 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
   box-sizing: border-box;
 }
 
+/* -------- forms ---------- */
 .page-head{ 
   margin:44px 0 26px;
  }
@@ -60,6 +61,11 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
   margin-bottom:7px; 
   font-weight:700;
 }
+.field-row{ 
+  display:grid; 
+  grid-template-columns:1fr 1fr; 
+  gap:18px; }
+
 input[type=text],
 input[type=date],
 input[type=number],

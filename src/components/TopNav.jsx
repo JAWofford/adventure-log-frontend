@@ -22,10 +22,12 @@ const {user, logout} = useAuth();
                 className="home"
                 label="Home" />
                 {user &&
-                    <AppLink
+                <div>
+                <AppLink
                 to="/dashboard"
                 className="dashboard"
                 label="Dashboard" />
+                </div>
                     }
             </div>
             

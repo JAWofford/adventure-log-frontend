@@ -31,6 +31,11 @@
   transform:rotate(-8deg);
 }
 
+.nav-app-links{
+  display: flex;
+  gap: 15px;
+}
+
 /* login link extra styling */
 .app-link.login, 
 .app-button.logout{

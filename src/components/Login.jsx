@@ -47,7 +47,7 @@ export default function Login() {
             <div className="page-head">
                 <h1>Login to Continue Your Journey</h1>
             </div>
-            <div className="layout">
+            <div className="login-form-layout">
                 <form onSubmit={handleSubmit} className="form-panel">
                     {/* show form error here if there is one. */}
                     {loginError && <p className="error">{loginError}</p>}

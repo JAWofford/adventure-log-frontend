@@ -1,8 +1,15 @@
-//import React from 'react'
+import AppLink from "./AppLink";
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>Dashboard
+
+      <AppLink
+        to="/newtriplog"
+        className="new-log"
+        label="+ New Trip Log"
+      />
+    </div>
   )
 }
 
