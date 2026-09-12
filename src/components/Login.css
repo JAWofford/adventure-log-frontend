@@ -22,12 +22,12 @@
      margin-bottom: 10px;
  }
 
-  .app-link.register{
+.app-link.register{
     background: var(--highway);
     border: 2px solid var(--highway-dark);
  }
 
- .app-link.register:hover{
+.app-link.register:hover{
     background: var(--white);
     color: var(--highway-dark);
     border: 2px solid var(--highway-dark);

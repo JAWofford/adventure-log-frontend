@@ -6,6 +6,15 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
     padding: 0 28px;
 }
 
+#root {
+  
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ---------- dashed route divider ---------- */
 .route-divider{
   display:flex; align-items:center; gap:14px; margin:56px 0 28px;
@@ -18,15 +27,7 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
   width:10px; height:10px; border-radius:50%; background:var(--highway); flex:0 0 auto;
 }
 
-#root {
-  
-  max-width: 100%;
-  margin: 0 auto;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
-
+/*keep sizing within the box*/
 *,
 *::before,
 *::after {
@@ -89,10 +90,34 @@ textarea{
 input:focus,select:focus,textarea:focus{ 
   border-color:var(--denim);
  }
+
+ /*------- for required fields ----*/
 .required {
   color: var(--highway);
 }
 .required-note {
   font-size: .8rem;
   margin-bottom: 20px;
+}
+
+/*------- special buttons --------*/
+
+.cancel-button {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink-soft);
+  box-shadow: none;
+  padding: 16px 20px;
+}
+
+.orange-button {
+  background: var(--highway);
+  border-color: var(--highway-dark);
+  color: var(--white);
+}
+
+.orange-button:hover {
+  background: var(--white);
+  color: var(--highway-dark);
+  border: 2px solid var(--highway-dark);
 }

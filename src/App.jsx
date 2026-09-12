@@ -1,4 +1,4 @@
-import { Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import RegistrationForm from './components/RegistrationForm'
 import LandingPage from './components/LandingPage'
 import Dashboard from './components/Dashboard'
@@ -6,6 +6,8 @@ import Login from './components/Login'
 import TopNav from './components/TopNav'
 import './App.css'
 import TripLogForm from './components/TripLogForm'
+import TripList from './components/TripList'
+import ReviewList from './components/ReviewList'
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/newtriplog" element={<TripLogForm />} />
+        <Route path="/triplist" element={<TripList />} />
+         <Route path="/reviewlist" element={<ReviewList />} />
       </Routes>
     </main> 
 
