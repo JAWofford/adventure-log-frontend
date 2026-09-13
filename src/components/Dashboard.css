@@ -1,0 +1,37 @@
+.dashboard-app-links {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.db-page-tabs {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px dashed var(--line);
+}
+
+.db-page-tabs .app-button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px 4px;
+  color: var(--pine-dark);
+  text-decoration: none;
+}
+
+.db-page-tabs .app-button:hover {
+  background: none;
+  color: var(--pine-dark);
+  transform: none;
+}
+
+.db-page-tabs .selected-tab {
+  border-bottom: 3px solid var(--highway);
+}
+
+.db-page-tabs .unselected-tab {
+  border-bottom: 3px solid transparent;
+  color: var(--ink-soft)
+}

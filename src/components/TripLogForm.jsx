@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { createLog } from "../api/log";
+import { createLog, addRouteLeg } from "../api/log";
+import Button from "./Button";
+import './TripLogForm.css';
+import RouteLegForm from "./RouteLegForm";
 
 
 export default function TripLogForm() {
@@ -11,6 +14,7 @@ export default function TripLogForm() {
         startDate: "",
         endDate: "",
         privacy: "public",
+        routeLegs: [{ legTitle: "", legNotes: "" }]  // starts with one blank leg
     })
 
     const [logError, setLogError] = useState("");
@@ -26,19 +30,59 @@ export default function TripLogForm() {
         }));
     }
 
+    const handleLegChange = (index, name, value) => {
+        //copy the route legs array
+        const currentRouteLegs = [...tripLogData.routeLegs];
+        //replace just the leg at [index],keeping its other fields.
+        currentRouteLegs[index] = {
+            ...currentRouteLegs[index],
+            [name]: value
+        };
+        //Update tripLogData with the new routeLegs array.
+        setTripLogData((prevData) => ({
+            ...prevData,
+            routeLegs: currentRouteLegs
+        }));
+    }
+
+    const addLeg = () => {
+        //copy the route legs array
+        const newRouteLegs = [
+            ...tripLogData.routeLegs,
+            {
+                legTitle: "",
+                legNotes: ""
+            }
+        ];
+
+        setTripLogData((prevData) => ({
+            ...prevData,
+            routeLegs: newRouteLegs
+        }));
+    }
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         setLogError("");
 
+        //separate route legs out from the trip-level fields
+        const { routeLegs, ...tripLogOnly } = tripLogData;
+
         //check any null values.
         const cleanedData = {
-            ...tripLogData,
-            startDate: (tripLogData.startDate===""? null : tripLogData.startDate),
-            endDate: (tripLogData.endDate===""? null : tripLogData.endDate)
+            ...tripLogOnly,
+            startDate: (tripLogOnly.startDate === "" ? null : tripLogOnly.startDate),
+            endDate: (tripLogOnly.endDate === "" ? null : tripLogOnly.endDate)
         }
 
         try {
-            await createLog(cleanedData);
+            const createdTrip = await createLog(cleanedData);
+            //filter routeLegs,then loop and await addRouteLeg for each
+            const validLegs = routeLegs.filter(leg => leg.legTitle.trim() !== "");
+            for (const leg of validLegs) {
+                await addRouteLeg(createdTrip.tripId, leg)
+            }
             navigate('/dashboard');
         } catch (err) {
             if (err instanceof TypeError) {
@@ -50,85 +94,121 @@ export default function TripLogForm() {
 
     }
 
-    return (
-        <div className="trip-log">
 
-            <form onSubmit={handleSubmit} className="log-form">
-                <h2 className="log-title">Create a Trip Log</h2>
-                {/* show trip log form error here if there is one. */}
-                {logError && <p className="error">{logError}</p>}
-                <div className="log-form-field">
-                    <label>Trip Name</label>
-                    <input
-                        type="text"
-                        id="tripName"
-                        name="tripName"
-                        value={tripLogData.tripName}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>Description/Notes</label>
-                    <input
-                        type="text"
-                        id="tripDescription"
-                        name="tripDescription"
-                        value={tripLogData.tripDescription}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>Start Date:</label>
-                    <input
-                        type="date"
-                        id="startDate"
-                        name="startDate"
-                        value={tripLogData.startDate}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>End Date:</label>
-                    <input
-                        type="date"
-                        id="endDate"
-                        name="endDate"
-                        value={tripLogData.endDate}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="reg-form-field">
-                    <label>
+    return (
+        <div className="wrap">
+            <div className="page-head">
+                <h1>New Trip Log</h1>
+                <p>The scrapbook version — what you'd want to remember next time you plan a trip like this one.</p>
+            </div>
+
+            <form onSubmit={handleSubmit} >
+                <div className="log-form-panel">
+                    <p className="required-note">* Required field</p>
+                    {/* show trip log form error here if there is one. */}
+                    {logError && <p className="error">{logError}</p>}
+                    <div className="field">
+                        <label>Trip Name: <span className="required">*</span></label>
                         <input
-                            type="radio"
-                            name="privacy"
-                            value="public"
-                            checked={tripLogData.privacy === "public"}
+                            type="text"
+                            id="tripName"
+                            name="tripName"
+                            value={tripLogData.tripName}
+                            onChange={handleChange}
+                            maxLength={250}
+                            required
+                        />
+                    </div>
+                    <div className="field-row">
+                        <div className="field">
+                            <label>Start Date:</label>
+                            <input
+                                type="date"
+                                id="startDate"
+                                name="startDate"
+                                value={tripLogData.startDate}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="field">
+                            <label>End Date:</label>
+                            <input
+                                type="date"
+                                id="endDate"
+                                name="endDate"
+                                value={tripLogData.endDate}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="privacy-section">
+                        <h1>Who Can See This <span className="required">*</span></h1>
+                        <p>Trips you mark public show up for everyone, private ones stay just for your own log.</p>
+                        <div className="privacy-field-row">
+                            <div className="field">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="privacy"
+                                        value="public"
+                                        checked={tripLogData.privacy === "public"}
+                                        onChange={handleChange}
+                                    />
+                                    Public
+                                </label>
+                            </div>
+                            <div className="field">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="privacy"
+                                        value="private"
+                                        checked={tripLogData.privacy === "private"}
+                                        onChange={handleChange}
+                                    />
+                                    Private
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label>Description/Notes</label>
+                        <textarea
+                            type="text"
+                            id="tripDescription"
+                            name="tripDescription"
+                            value={tripLogData.tripDescription}
                             onChange={handleChange}
                         />
-                        Public
-                    </label>
+                    </div>
                 </div>
-                <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="privacy"
-                            value="private"
-                            checked={tripLogData.privacy === "private"}
-                            onChange={handleChange}
-                        />
-                        Private
-                    </label>
+                <div className="route-divider"><span className="pin"></span> Trip Legs <span className="pin"></span></div>
+
+                {tripLogData.routeLegs.map((leg, index) => (
+                    <div className="route-legs">
+                        <div className="log-form-panel">
+                            <RouteLegForm
+                                key={index}
+                                legData={leg}
+                                onChange={(name, value) => handleLegChange(index, name, value)}
+                            />
+                        </div>
+                    </div>
+                ))}
+
+                <Button
+                    className="add-leg-button"
+                    onClick={addLeg}
+                    label="+ Add another leg"
+                />
+                <div className="log-form-buttons">
+                    <Button
+                        className="orange-button"
+                        type="submit"
+                        label="Save Trip Log" />
                 </div>
-                <div className="submit-button">
-                    <button type="submit">
-                        Create Log
-                    </button>
-                </div>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
 

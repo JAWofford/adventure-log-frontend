@@ -31,12 +31,19 @@
   transform:rotate(-8deg);
 }
 
-/* login link extra styling */
-.login {
-    background: var(--mustard);
+.nav-app-links{
+  display: flex;
+  gap: 15px;
 }
 
-.login:hover {
+/* login link extra styling */
+.app-link.login, 
+.app-button.logout{
+ background: var(--mustard);
+ color: var(--pine-dark);
+}
+.app-link.login:hover,
+.app-button.logout:hover {
      background: var(--mustard);
      color: var(--pine-dark);
 }

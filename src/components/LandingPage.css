@@ -54,6 +54,7 @@
 }
 .app-link.hero-button:hover{
      background:var(--highway);
+    color:#fff;
 }
 .features{ 
   padding-top: 10px;
