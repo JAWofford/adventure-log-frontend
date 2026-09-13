@@ -4,6 +4,7 @@ import './TripList.css';
 
 export default function TripList() {
 
+  //API call
   const {trips, loading, error} = useTripLogs();
 
   if (loading) return (

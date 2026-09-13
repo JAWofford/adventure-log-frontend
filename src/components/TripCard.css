@@ -18,14 +18,33 @@
     border-top: 2px dashed var(--line);
 }
 
-.stamp{
-  position:absolute; top:-12px; right:14px;
-  transform:rotate(6deg);
-  background:var(--mustard); border:2px solid var(--ink-soft);
-  border-radius:8px; padding:4px 10px;
-  font-family:var(--font-mono); font-size:.68rem; font-weight:700; letter-spacing:.04em;
-  color:var(--ink);
+.card:hover {
+    border-color: var(--highway-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
 }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.stamp {
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    transform: rotate(6deg);
+    background: var(--mustard);
+    border: 2px solid var(--ink-soft);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--ink);
+}
+
 .card-title {
     font-size: 1.05rem;
     margin-bottom: 4px;
@@ -50,10 +69,10 @@
 .card .trip-desc {
     font-size: .9rem;
     margin-bottom: 14px;
-     display: -webkit-box;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
-     line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
 }
 

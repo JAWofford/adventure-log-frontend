@@ -11,11 +11,11 @@ function Dashboard() {
   const [pageView, setPageView] = useState("trips")
   const handleTabClick = (view) => setPageView(view);
 
-if(loading) return (
-      <div className="app-status">
-        <p>Loading…</p>
-      </div>
-)
+  if (loading) return (
+    <div className="app-status">
+      <p>Loading…</p>
+    </div>
+  )
 
   return (
     <div className="wrap">

@@ -8,6 +8,7 @@ import './App.css'
 import TripLogForm from './components/TripLogForm'
 import TripList from './components/TripList'
 import ReviewList from './components/ReviewList'
+import TripDetail from'./components/TripDetail'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/newtriplog" element={<TripLogForm />} />
         <Route path="/triplist" element={<TripList />} />
          <Route path="/reviewlist" element={<ReviewList />} />
+         <Route path="/trip/:tripId" element={<TripDetail/>}/>
       </Routes>
     </main> 
 

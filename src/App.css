@@ -1,13 +1,27 @@
-h1,h2,h3{ font-family:var(--font-display); font-weight:400; letter-spacing:.02em; line-height:1.15; margin:0 0 .5em; color:var(--pine-dark); }
-p{ margin:0 0 1em; color:var(--ink-soft); }
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.15;
+  margin: 0 0 .5em;
+  color: var(--pine-dark);
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--ink-soft);
+}
+
 .wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0 28px;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 28px;
 }
 
 #root {
-  
+
   max-width: 100%;
   margin: 0 auto;
   min-height: 100svh;
@@ -16,15 +30,32 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 }
 
 /* ---------- dashed route divider ---------- */
-.route-divider{
-  display:flex; align-items:center; gap:14px; margin:56px 0 28px;
-  color:var(--ink-soft); font-family:var(--font-mono); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;
+.route-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 56px 0 28px;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
-.route-divider::before,.route-divider::after{
-  content:""; flex:1; height:0; border-top:3px dashed var(--line);
+
+.route-divider::before,
+.route-divider::after {
+  content: "";
+  flex: 1;
+  height: 0;
+  border-top: 3px dashed var(--line);
 }
-.route-divider .pin{
-  width:10px; height:10px; border-radius:50%; background:var(--highway); flex:0 0 auto;
+
+.route-divider .pin {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--highway);
+  flex: 0 0 auto;
 }
 
 /*keep sizing within the box*/
@@ -35,37 +66,43 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 }
 
 /* -------- forms ---------- */
-.page-head{ 
-  margin:44px 0 26px;
- }
-  .page-head h1{ 
-    font-size:1.8rem; 
-    margin-bottom:4px;
-   }
-  .form-panel{
-  background:var(--card); 
-  border:2px solid var(--ink); 
-  border-radius:var(--radius-lg);
-  padding:34px; 
-  box-shadow:var(--shadow);
+.page-head {
+  margin: 44px 0 26px;
 }
-.field{ 
-  margin-bottom:22px;
- }
-.field label{
-  display:block; 
-  font-family:var(--font-mono); 
-  font-size:.75rem; 
-  text-transform:uppercase;
-  letter-spacing:.06em; 
-  color:var(--pine-dark); 
-  margin-bottom:7px; 
-  font-weight:700;
+
+.page-head h1 {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
 }
-.field-row{ 
-  display:grid; 
-  grid-template-columns:1fr 1fr; 
-  gap:18px; }
+
+.form-panel {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+
+.field {
+  margin-bottom: 22px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--pine-dark);
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
 
 input[type=text],
 input[type=date],
@@ -73,28 +110,33 @@ input[type=number],
 input[type=password],
 input[type=email],
 select,
-textarea{
-  width:100%; 
-  padding:12px 14px; 
-  border:2px solid var(--line); 
-  border-radius:10px;
-  background:#fff; 
-  font-family:var(--font-body); 
-  font-size:.95rem; 
-  color:var(--ink);
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--ink);
 }
-textarea{ 
-  resize:vertical; 
-  min-height:96px; 
-}
-input:focus,select:focus,textarea:focus{ 
-  border-color:var(--denim);
- }
 
- /*------- for required fields ----*/
+textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--denim);
+}
+
+/*------- for required fields ----*/
 .required {
   color: var(--highway);
 }
+
 .required-note {
   font-size: .8rem;
   margin-bottom: 20px;
@@ -121,3 +163,19 @@ input:focus,select:focus,textarea:focus{
   color: var(--highway-dark);
   border: 2px solid var(--highway-dark);
 }
+
+/*orange circle.*/
+.mark {
+  width:30px; 
+  height:30px; 
+  border-radius:50%;
+  background:var(--highway); 
+  border:3px solid var(--pine-dark);
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  color:#fff; 
+  font-size: 14px; 
+  font-family:var(--font-mono); 
+  font-weight:700;
+  }

@@ -53,4 +53,19 @@ export async function getUserTripLogs() {
     return response.json();
 }
 
+export async function getTripLogById(tripId) {
+        const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {
+        method: "GET",
+        credentials: "include"
+    });
+
+//pulling message from custom error sent from backend ErrorResponseDto
+ if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Action failed");
+    }
+   
+
+    return response.json();
+}
 

@@ -1,0 +1,57 @@
+.trip-detail-subheading{
+    display:flex;
+}
+.back-link{
+    text-decoration: none;
+    color: var(--highway-dark);
+    font-weight:600;
+     margin-left: auto;
+}
+
+.trip-detail .route-divider {
+    margin: 16px 0 28px;
+}
+
+.trip-detail .trip-dates {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--pine-dark);
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+
+.route-legs {
+  position: relative;
+margin: 25px 0;
+}
+
+.leg-display::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    border-left: 3px dashed var(--line);
+}
+.leg-display{
+     display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    position: relative;
+     margin: 20px;
+}
+.leg-display .mark{
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 1;
+}
+.log-detail-panel {
+    flex:1;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 34px 34px 10px 34px;
+  box-shadow: var(--shadow);
+}
