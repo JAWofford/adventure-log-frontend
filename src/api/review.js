@@ -1,12 +1,12 @@
 import { BASE_URL } from "../utils/baseURL";
 
-//--------------POST FUNCTIONS------------------
-export async function createLog(tripLogData) {
-        const response = await fetch(`${BASE_URL}triplogs`, {
+//-----------POST FUNCTIONS--------------
+export async function createReview(reviewData) {
+        const response = await fetch(`${BASE_URL}campgroundreviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         credentials: "include",
-        body: JSON.stringify(tripLogData)
+        body: JSON.stringify(reviewData)
     });
 
 //pulling message from custom error sent from backend ErrorResponseDto
@@ -19,12 +19,12 @@ export async function createLog(tripLogData) {
     return response.json();
 }
 
-export async function addRouteLeg(tripId, leg) {
-        const response = await fetch(`${BASE_URL}triplogs/${tripId}/legs`, {
+export async function addReviewStay(campgroundId, stay) {
+        const response = await fetch(`${BASE_URL}campgroundreviews/${campgroundId}/stays`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         credentials: "include",
-        body: JSON.stringify(leg)
+        body: JSON.stringify(stay)
     });
 
 //pulling message from custom error sent from backend ErrorResponseDto
@@ -37,9 +37,9 @@ export async function addRouteLeg(tripId, leg) {
     return response.json();
 }
 
-//--------------------GET FUNCTIONS----------------------
-export async function getUserTripLogs() {
-        const response = await fetch(`${BASE_URL}triplogs/user`, {
+//--------------GET FUNCTIONS-------------------
+export async function getUserReviews() {
+        const response = await fetch(`${BASE_URL}campgroundreviews/user`, {
         method: "GET",
         credentials: "include",
     });
@@ -54,8 +54,8 @@ export async function getUserTripLogs() {
     return response.json();
 }
 
-export async function getTripLogById(tripId) {
-        const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {
+export async function getReviewById(campgroundId) {
+        const response = await fetch(`${BASE_URL}campgroundreviews/${campgroundId}`, {
         method: "GET",
         credentials: "include"
     });
@@ -71,12 +71,12 @@ export async function getTripLogById(tripId) {
 }
 
 //---------------PUT FUNCTIONS--------------------------
-export async function updateLog(tripId, tripLogData) {
-        const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {
+export async function updateReview(campgroundId, reviewData) {
+        const response = await fetch(`${BASE_URL}campgroundreviews/${campgroundId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json"},
         credentials: "include",
-        body: JSON.stringify(tripLogData)
+        body: JSON.stringify(reviewData)
     });
 
 //pulling message from custom error sent from backend ErrorResponseDto
@@ -90,8 +90,8 @@ export async function updateLog(tripId, tripLogData) {
 }
 
 //------------------DELETE FUNCTIONS------------------------
-export async function deletLog(tripId) {
-        const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {
+export async function deleteReview(campgroundId) {
+        const response = await fetch(`${BASE_URL}campgroundreviews/${campgroundId}`, {
         method: "DELETE",
         credentials: "include",
        
