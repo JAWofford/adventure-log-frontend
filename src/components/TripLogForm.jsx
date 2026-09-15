@@ -1,21 +1,32 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { createLog, addRouteLeg } from "../api/log";
+import { createLog, updateLog, addRouteLeg, updateRouteLeg } from "../api/log";
 import Button from "./Button";
 import './TripLogForm.css';
 import RouteLegForm from "./RouteLegForm";
 
 
-export default function TripLogForm() {
+export default function TripLogForm({ existingTrip, onSaveSuccess, onCancel }) {
 
-    const [tripLogData, setTripLogData] = useState({
-        tripName: "",
-        tripDescription: "",
-        startDate: "",
-        endDate: "",
-        privacy: "public",
-        routeLegs: [{ legTitle: "", legNotes: "" }]  // starts with one blank leg
-    })
+    const [tripLogData, setTripLogData] = useState(
+        existingTrip //pulling in info for edit mode
+            ? {
+                ...existingTrip,
+                startDate: existingTrip.startDate ?? "",
+                endDate: existingTrip.endDate ?? "",
+                routeLegs: existingTrip.routeLegs.map(leg => ({
+                    ...leg,
+                    legNotes: leg.legNotes ?? ""
+                }))
+            }
+            : {
+                tripName: "",
+                tripDescription: "",
+                startDate: "",
+                endDate: "",
+                privacy: "public",
+                routeLegs: [{ legTitle: "", legNotes: "" }]  // starts with one blank leg
+            });
 
     const [logError, setLogError] = useState("");
 
@@ -77,13 +88,28 @@ export default function TripLogForm() {
         }
 
         try {
-            const createdTrip = await createLog(cleanedData);
-            //filter routeLegs,then loop and await addRouteLeg for each
+            //Edit Mode: PUT to updatethe existing trip(uses tripId already in object in state)
+            //Create Mode: POST to create a brand-new trip and get back its generated tripId.
+            const savedTrip = existingTrip
+                ? await updateLog(existingTrip.tripId, cleanedData)
+                : await createLog(cleanedData);
+
+
+            //Drop any leg the user left blank (title-only required, per backend)
             const validLegs = routeLegs.filter(leg => leg.legTitle.trim() !== "");
+
+            // Save legs one at a time, in order — the backend
+            // calculates each new leg's legOrder from however many legs already exist.
             for (const leg of validLegs) {
-                await addRouteLeg(createdTrip.tripId, leg)
+                //determine which api method to call based on legId (only existing legs have this value)
+                if ("legId" in leg) {
+                    await updateRouteLeg(savedTrip.tripId, leg.legId, leg)
+                } else {
+                    await addRouteLeg(savedTrip.tripId, leg)
+                }
             }
-            navigate('/dashboard');
+            existingTrip ? onSaveSuccess(savedTrip) : navigate('/dashboard');
+
         } catch (err) {
             if (err instanceof TypeError) {
                 setLogError("We couldn't connect to the server. Please try again in a moment.")
@@ -94,11 +120,24 @@ export default function TripLogForm() {
 
     }
 
+    const handleCancel = () => {
+        if (existingTrip) {
+            onCancel();
+        } else {
+            navigate('/dashboard');
+        }
+    };
+
 
     return (
         <div className="wrap">
             <div className="page-head">
-                <h1>New Trip Log</h1>
+                <h1>{existingTrip ? (
+                    <>
+                    <span className='edit-title-span'>Edit Trip:   </span>
+                    {existingTrip.tripName}
+                    </>
+                    )  : "New Trip Log"}</h1>
                 <p>The scrapbook version — what you'd want to remember next time you plan a trip like this one.</p>
             </div>
 
@@ -185,10 +224,9 @@ export default function TripLogForm() {
                 <div className="route-divider"><span className="pin"></span> Trip Legs <span className="pin"></span></div>
 
                 {tripLogData.routeLegs.map((leg, index) => (
-                    <div className="route-legs">
+                    <div key={index} className="route-legs">
                         <div className="log-form-panel">
                             <RouteLegForm
-                                key={index}
                                 legData={leg}
                                 onChange={(name, value) => handleLegChange(index, name, value)}
                             />
@@ -201,12 +239,17 @@ export default function TripLogForm() {
                     onClick={addLeg}
                     label="+ Add another leg"
                 />
-                <div className="log-form-buttons">
+                 <div className="log-form-buttons">
+                    <Button
+                        className="cancel-button"
+                        label="Cancel"
+                        onClick={handleCancel} />                 
                     <Button
                         className="orange-button"
                         type="submit"
                         label="Save Trip Log" />
                 </div>
+               
             </form >
         </div >
     )

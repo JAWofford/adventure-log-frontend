@@ -1,3 +1,7 @@
+.edit-title-span{
+    color: transparent;
+     -webkit-text-stroke: 2px var(--ink-soft);
+}
 .privacy-section {
   border: 2px solid var(--line);
   border-radius: 10px;

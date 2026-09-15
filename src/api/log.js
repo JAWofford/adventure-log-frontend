@@ -89,6 +89,24 @@ export async function updateLog(tripId, tripLogData) {
     return response.json();
 }
 
+export async function updateRouteLeg(tripId,legId, legData) {
+        const response = await fetch(`${BASE_URL}triplogs/${tripId}/legs/${legId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json"},
+        credentials: "include",
+        body: JSON.stringify(legData)
+    });
+
+//pulling message from custom error sent from backend ErrorResponseDto
+ if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Action failed");
+    }
+   
+
+    return response.json();
+}
+
 //------------------DELETE FUNCTIONS------------------------
 export async function deletLog(tripId) {
         const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {

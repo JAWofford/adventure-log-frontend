@@ -4,7 +4,7 @@ import { getTripLogById } from "../api/log";
 /**
  * Fetches a single trip log by id. Re-fetches if tripId changes.
  * @param {string|number} tripId
- * @returns {{ trip: Object|null, loading: boolean, error: string|null }}
+ * @returns {{ trip: Object|null, setTrip: Function, loading: boolean, error: string|null }}
  */
 
 const useTripLog = (tripId) => {
@@ -27,7 +27,7 @@ const useTripLog = (tripId) => {
         load();
     }, [tripId]);
 
-    return {trip, loading, error}
+    return {trip, setTrip, loading, error}
 };
 
 export default useTripLog;

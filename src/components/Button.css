@@ -2,7 +2,7 @@
     display: inline-block;
     padding: 9px 18px;
     background:var(--pine); 
-    color:#fff;
+    color:var(--white);
     border: 2px solid var(--pine);
     border-radius: 999px;
     font-size: .86rem;
