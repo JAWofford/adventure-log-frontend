@@ -1,10 +1,11 @@
 import useTripLog from '../hooks/useTripLog';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './TripDetail.css';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import { useState } from 'react';
 import TripLogForm from './TripLogForm';
+import { deleteLog } from '../api/log';
 
 export default function TripDetail() {
 
@@ -17,13 +18,34 @@ export default function TripDetail() {
     const handleEditClick = () => setIsEditing(true);
 
     const handleSaveSuccess = (updatedTrip) => {
-    setTrip(updatedTrip);
-    setIsEditing(false);
-};
+        setTrip(updatedTrip);
+        setIsEditing(false);
+    };
 
-//Set isEditing to false so component unmounts.
-// On unmount React destroys all it's local state.
-const handleCancelEdit = () => setIsEditing(false);
+
+    const navigate = useNavigate();
+
+    const handleDelete = async () => {
+        const confirmed = window.confirm("Delete this trip log and all it's route legs? This can't be undone.")
+        if (!confirmed) return;
+
+        try {
+            await deleteLog(trip.tripId);
+            navigate('/dashboard');
+        } catch (err) {
+            if (err instanceof TypeError) {
+                alert("We couldn't connect to the server. Please try again in a moment.") //TODO: change to custom error handling.
+            } else {
+                alert(err.message);
+            }
+        }
+
+    }
+
+
+    //Set isEditing to false so component unmounts.
+    // On unmount React destroys all it's local state.
+    const handleCancelEdit = () => setIsEditing(false);
 
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
@@ -47,7 +69,7 @@ const handleCancelEdit = () => setIsEditing(false);
             <button onClick={() => window.location.reload()}>Retry</button>
         </div>
     );
-    
+
     //main return
     return (
         // if editing display tripForm pre-filled, otherwise display this components read-only jsx.
@@ -89,6 +111,11 @@ const handleCancelEdit = () => setIsEditing(false);
                                 <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
                             </svg>}
                             title="Edit trip log" />
+                        <Button
+                            className="delete-button"
+                            onClick={handleDelete}
+                            label="Delete"
+                            title="Delete trip log" />
                         <div className="form-panel">
                             <h3 className="trip-desc-title">Description/Notes:</h3>
                             <div className="trip-desc">{trip.tripDescription}</div>
@@ -108,10 +135,10 @@ const handleCancelEdit = () => setIsEditing(false);
                     </div>
                 </div>
             ) : (
-               <TripLogForm 
-               existingTrip={trip} 
-               onSaveSuccess={handleSaveSuccess} 
-               onCancel={handleCancelEdit} />
+                <TripLogForm
+                    existingTrip={trip}
+                    onSaveSuccess={handleSaveSuccess}
+                    onCancel={handleCancelEdit} />
             )}
         </div>
 

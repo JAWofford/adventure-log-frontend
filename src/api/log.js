@@ -1,4 +1,5 @@
 import { BASE_URL } from "../utils/baseURL";
+import {handleApiError} from "./apiHelpers.js";
 
 //--------------POST FUNCTIONS------------------
 export async function createLog(tripLogData) {
@@ -9,14 +10,10 @@ export async function createLog(tripLogData) {
         body: JSON.stringify(tripLogData)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
  if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
-
-    return response.json();
+    await handleApiError(response);
+}
+   return response.json();
 }
 
 export async function addRouteLeg(tripId, leg) {
@@ -27,12 +24,9 @@ export async function addRouteLeg(tripId, leg) {
         body: JSON.stringify(leg)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+} 
 
     return response.json();
 }
@@ -44,13 +38,9 @@ export async function getUserTripLogs() {
         credentials: "include",
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
-
+if (!response.ok) {
+    await handleApiError(response);
+}
     return response.json();
 }
 
@@ -60,12 +50,9 @@ export async function getTripLogById(tripId) {
         credentials: "include"
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -79,12 +66,9 @@ export async function updateLog(tripId, tripLogData) {
         body: JSON.stringify(tripLogData)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -97,30 +81,23 @@ export async function updateRouteLeg(tripId,legId, legData) {
         body: JSON.stringify(legData)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
-
+if (!response.ok) {
+    await handleApiError(response);
+}
     return response.json();
 }
 
 //------------------DELETE FUNCTIONS------------------------
-export async function deletLog(tripId) {
+export async function deleteLog(tripId) {
         const response = await fetch(`${BASE_URL}triplogs/${tripId}`, {
         method: "DELETE",
         credentials: "include",
        
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return true;
 }

@@ -1,4 +1,5 @@
 import { BASE_URL } from "../utils/baseURL";
+import {handleApiError} from "./apiHelpers.js";
 
 //-----------POST FUNCTIONS--------------
 export async function createReview(reviewData) {
@@ -9,12 +10,9 @@ export async function createReview(reviewData) {
         body: JSON.stringify(reviewData)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -27,12 +25,9 @@ export async function addReviewStay(campgroundId, stay) {
         body: JSON.stringify(stay)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -44,12 +39,9 @@ export async function getUserReviews() {
         credentials: "include",
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -60,12 +52,9 @@ export async function getReviewById(campgroundId) {
         credentials: "include"
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -79,12 +68,9 @@ export async function updateReview(campgroundId, reviewData) {
         body: JSON.stringify(reviewData)
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return response.json();
 }
@@ -97,12 +83,9 @@ export async function deleteReview(campgroundId) {
        
     });
 
-//pulling message from custom error sent from backend ErrorResponseDto
- if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Action failed");
-    }
-   
+if (!response.ok) {
+    await handleApiError(response);
+}
 
     return true;
 }
