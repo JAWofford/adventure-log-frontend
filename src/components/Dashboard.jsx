@@ -5,11 +5,14 @@ import { useState } from "react";
 import './Dashboard.css';
 import TripList from "./TripList";
 import ReviewList from "./ReviewList";
+import { useLocation } from 'react-router-dom';
 
 function Dashboard() {
   const { user, loading } = useAuth();
-  const [pageView, setPageView] = useState("trips")
+  const location = useLocation();
+  const [pageView, setPageView] = useState(location.state?.initialTab ?? "trips")
   const handleTabClick = (view) => setPageView(view);
+
 
   if (loading) return (
     <div className="app-status">

@@ -1,3 +1,5 @@
+
+
 .trip-detail-subheading{
     display:flex;
 }
@@ -8,9 +10,7 @@
      margin-left: auto;
 }
 
-.trip-detail .route-divider {
-    margin: 16px 0 28px;
-}
+
 
 .trip-detail .trip-dates {
     font-family: var(--font-mono);
@@ -21,7 +21,20 @@
     margin-bottom: 7px;
     font-weight: 700;
 }
+.trip-detail .route-divider {
+    margin: 16px 0 28px;
+}
 
+.edit-button{
+    display: flex;
+    margin-left:auto;
+    margin-bottom: 10px;
+    /* background:var(--highway);  */
+    background: transparent;
+    color:var(--highway-dark);
+    /* border-color: var(--highway-dark); */
+    border-radius: 15px;
+}
 .route-legs {
   position: relative;
 margin: 25px 0;

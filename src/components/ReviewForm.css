@@ -1,0 +1,7 @@
+.review-form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
