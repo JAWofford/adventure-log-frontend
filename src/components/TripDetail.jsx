@@ -26,7 +26,7 @@ export default function TripDetail() {
     const navigate = useNavigate();
 
     const handleDelete = async () => {
-        const confirmed = window.confirm("Delete this trip log and all it's route legs? This can't be undone.")
+        const confirmed = window.confirm("Delete this trip log and all it's route legs? This can't be undone.") // Future: change this to custom modal.
         if (!confirmed) return;
 
         try {
@@ -89,7 +89,7 @@ export default function TripDetail() {
                             {trip.startDate && !trip.endDate && (
                                 <div className="trip-dates">{formatDate(trip.startDate)}</div>
                             )}
-                            <Link to="/dashboard" className="back-link">← Back</Link>
+                            <Link to="/dashboard" state={{ initialTab: "trips" }} className="back-link">← Back</Link>
                         </div>
 
 

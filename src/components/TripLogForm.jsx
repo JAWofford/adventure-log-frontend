@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createLog, updateLog, addRouteLeg, updateRouteLeg } from "../api/log";
 import Button from "./Button";

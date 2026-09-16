@@ -9,6 +9,8 @@ import TripLogForm from './components/TripLogForm'
 import TripList from './components/TripList'
 import ReviewList from './components/ReviewList'
 import TripDetail from'./components/TripDetail'
+import ReviewForm from './components/ReviewForm'
+import ReviewDetail from './components/ReviewDetail'
 
 function App() {
 
@@ -28,10 +30,14 @@ function App() {
         <Route path="/register" element={<RegistrationForm />}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
+        {/* Trips */}
         <Route path="/newtriplog" element={<TripLogForm />} />
         <Route path="/triplist" element={<TripList />} />
+        <Route path="/trip/:tripId" element={<TripDetail/>}/>
+        {/* Reviews */}
          <Route path="/reviewlist" element={<ReviewList />} />
-         <Route path="/trip/:tripId" element={<TripDetail/>}/>
+         <Route path="/review/:campgroundId" element={<ReviewDetail/>}/>
+         <Route path="/newReview" element={<ReviewForm/>}/>
       </Routes>
     </main> 
 

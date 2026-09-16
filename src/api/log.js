@@ -1,6 +1,8 @@
 import { BASE_URL } from "../utils/baseURL";
 import {handleApiError} from "./apiHelpers.js";
 
+//Future: Create one generic api call helper function
+
 //--------------POST FUNCTIONS------------------
 export async function createLog(tripLogData) {
         const response = await fetch(`${BASE_URL}triplogs`, {

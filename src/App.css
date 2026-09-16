@@ -179,3 +179,7 @@ textarea:focus {
   font-family:var(--font-mono); 
   font-weight:700;
   }
+
+  .dashed-line{
+      border-bottom: 2px dashed var(--line);
+  }
