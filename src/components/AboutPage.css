@@ -1,0 +1,13 @@
+ .head-display{
+     width: 100%;
+     display: grid;
+     grid-template-columns: .8fr 1fr;
+     gap: 26px;
+     align-items: start;
+ }
+ 
+ .about-image {
+     width: 330px;
+     height: 250px;
+     object-fit: cover;
+ }

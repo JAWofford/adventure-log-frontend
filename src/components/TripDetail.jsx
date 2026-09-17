@@ -94,7 +94,7 @@ export default function TripDetail() {
 
 
                         <div className="route-divider"><span className="pin"></span> Trip Log <span className="pin"></span></div>
-
+                         <div className="edit-del-btns">       
                         <Button
                             className="edit-button"
                             onClick={handleEditClick}
@@ -114,8 +114,26 @@ export default function TripDetail() {
                         <Button
                             className="delete-button"
                             onClick={handleDelete}
-                            label="Delete"
+                            label=
+                            {<svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            >
+                                {/* Trash can */}
+                                <path d="M4 7h16" />
+                                <path d="M6 7l1 14h10l1-14" />
+                                <path d="M9 7V4h6v3" />
+
+                                {/* X */}
+                                <path d="M9 12l6 6" />
+                                <path d="M15 12l-6 6" />
+                            </svg>}
                             title="Delete trip log" />
+                            </div>
                         <div className="form-panel">
                             <h3 className="trip-desc-title">Description/Notes:</h3>
                             <div className="trip-desc">{trip.tripDescription}</div>
