@@ -1,13 +1,12 @@
-
-
-.trip-detail-subheading{
-    display:flex;
+.trip-detail-subheading {
+    display: flex;
 }
-.back-link{
+
+.back-link {
     text-decoration: none;
     color: var(--highway-dark);
-    font-weight:600;
-     margin-left: auto;
+    font-weight: 600;
+    margin-left: auto;
 }
 
 
@@ -21,23 +20,29 @@
     margin-bottom: 7px;
     font-weight: 700;
 }
+
 .trip-detail .route-divider {
     margin: 16px 0 28px;
 }
 
-.edit-button{
+.edit-del-btns {
     display: flex;
-    margin-left:auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
     margin-bottom: 10px;
-    /* background:var(--highway);  */
+}
+
+.edit-button,
+.delete-button {
     background: transparent;
-    color:var(--highway-dark);
-    /* border-color: var(--highway-dark); */
+    color: var(--highway-dark);
     border-radius: 15px;
 }
+
 .route-legs {
-  position: relative;
-margin: 25px 0;
+    position: relative;
+    margin: 25px 0;
 }
 
 .leg-display::before {
@@ -48,23 +53,26 @@ margin: 25px 0;
     bottom: 0;
     border-left: 3px dashed var(--line);
 }
-.leg-display{
-     display: flex;
+
+.leg-display {
+    display: flex;
     align-items: flex-start;
     gap: 5px;
     position: relative;
-     margin: 20px;
+    margin: 20px;
 }
-.leg-display .mark{
+
+.leg-display .mark {
     flex: 0 0 auto;
     position: relative;
     z-index: 1;
 }
+
 .log-detail-panel {
-    flex:1;
-  background: var(--card);
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 34px 34px 10px 34px;
-  box-shadow: var(--shadow);
+    flex: 1;
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 34px 34px 10px 34px;
+    box-shadow: var(--shadow);
 }

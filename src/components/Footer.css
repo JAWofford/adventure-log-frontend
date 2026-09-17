@@ -1,0 +1,17 @@
+.footer {
+    background: var(--cream);
+    border-top: 2px dashed var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76px;
+    padding: 0 55px;
+    margin: 25px 0 0;
+    
+}
+
+.footer .app-link {
+    border-radius: 799px;
+    font-size: 12px;
+    padding: 9px 18px;
+}

@@ -1,3 +1,9 @@
+
+/* makes room for topNav to be fixed */
+main {
+    padding-top: 76px;
+}
+
 h1,
 h2,
 h3 {
@@ -183,3 +189,5 @@ textarea:focus {
   .dashed-line{
       border-bottom: 2px dashed var(--line);
   }
+
+ 
