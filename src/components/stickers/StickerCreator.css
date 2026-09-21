@@ -1,0 +1,15 @@
+.design-options {
+    display: flex;
+    gap: 20px;
+}
+
+.design-option {
+    border: 2px solid transparent;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.design-option.selected {
+    border-color: #E8552B;
+}

@@ -1,7 +1,6 @@
-
 /* makes room for topNav to be fixed */
 main {
-    padding-top: 76px;
+  padding-top: 76px;
 }
 
 h1,
@@ -172,22 +171,35 @@ textarea:focus {
 
 /*orange circle.*/
 .mark {
-  width:30px; 
-  height:30px; 
-  border-radius:50%;
-  background:var(--highway); 
-  border:3px solid var(--pine-dark);
-  display:flex; 
-  align-items:center; 
-  justify-content:center;
-  color:#fff; 
-  font-size: 14px; 
-  font-family:var(--font-mono); 
-  font-weight:700;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--highway);
+  border: 3px solid var(--pine-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.dashed-line {
+  border-bottom: 2px dashed var(--line);
+}
+
+/* ---------Media Queries--------- */
+@media (max-width: 500px) {
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
-  .dashed-line{
-      border-bottom: 2px dashed var(--line);
+   .page-head h1 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+     text-align: center;
   }
 
- 
+}

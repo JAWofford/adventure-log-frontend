@@ -3,3 +3,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
 }
+
+@media (max-width: 500px) {
+    .trip-grid {
+        grid-template-columns: 1fr;
+    }
+}

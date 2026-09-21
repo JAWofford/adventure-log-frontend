@@ -32,13 +32,21 @@ export default function TopNav() {
                         className="home"
                         label="Home"
                         onClick={closeMenu} />
-                    {user &&
-                        <AppLink
-                            to="/dashboard"
-                            className="dashboard"
-                            label="Dashboard"
-                            onClick={closeMenu} />
-                    }
+                    {user && (
+                        <>
+                            <AppLink
+                                to="/dashboard"
+                                className="dashboard"
+                                label="Dashboard"
+                                onClick={closeMenu} />
+                            <AppLink
+                                to="/stickers"
+                                className="sticker-btn"
+                                label="Stickers"
+                                onClick={closeMenu} />
+                        </>
+                    )}
+
                 </div>
 
                 {/* Login / Logout */}

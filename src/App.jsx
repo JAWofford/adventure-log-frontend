@@ -14,6 +14,7 @@ import ReviewDetail from './components/ReviewDetail'
 import AboutPage from './components/AboutPage'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import StickerDisplay from './components/stickers/StickerDisplay'
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/review/:campgroundId" element={<ReviewDetail />} />
           <Route path="/newReview" element={<ReviewForm />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/stickers" element={<StickerDisplay/>}/>
         </Routes>
       </main>
 

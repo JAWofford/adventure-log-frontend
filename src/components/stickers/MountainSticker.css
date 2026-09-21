@@ -1,0 +1,51 @@
+.mountain-sticker {
+    position: relative;
+    width: 300px;
+    display: block;
+}
+
+.mountain-sticker-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mountain-center-text {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: #1F4438;
+    text-align: center;
+}
+
+.mountain-title {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #EAF0E6;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mountain-subtitle {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #EAF0E6;
+    text-align: center;
+}

@@ -95,3 +95,26 @@ body {
     display:grid; 
     grid-template-columns:repeat(3,1fr); 
     gap:24px; }
+
+    /* Media Query */
+@media (max-width: 768px) {
+.hero-links {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.hero-links .app-link {
+    font-size: .85rem;
+    padding: 10px 16px;
+    white-space: nowrap;
+}
+
+}
+
+@media (max-width: 500px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
