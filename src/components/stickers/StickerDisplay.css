@@ -1,5 +1,69 @@
 .sticker-display {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 30px;
+}
+.page-head{
+    margin-bottom: 0;
+}
+.sticker-collection {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 5px 20px;
+}
+
+/* width of stickers set here for main area.
+Used for container queries (cqw) on sticker component font sizing. */
+.collection-sticker {
+    width: 200px;
+    transition: transform 0.2s ease;
+    flex: 0 0 200px;
+    margin: 0 -30px;
+    container-type: inline-size;
+}
+
+.collection-sticker>* {
+    width: 100%;
+}
+
+/* ----sticker size/rotation pattern ---- */ */
+
+.collection-sticker:nth-child(6n + 1) {
+    transform: rotate(-5deg);
+}
+
+.collection-sticker:nth-child(6n + 2) {
+    transform: rotate(4deg) scale(0.9);
+}
+
+.collection-sticker:nth-child(6n + 3) {
+    transform: rotate(-2deg) scale(1.1);
+}
+
+.collection-sticker:nth-child(6n + 4) {
+    transform: rotate(7deg);
+}
+
+.collection-sticker:nth-child(6n + 5) {
+    transform: rotate(-6deg) scale(0.95);
+}
+
+.collection-sticker:nth-child(6n + 6) {
+    transform: rotate(3deg) scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .sticker-collection {
+        column-gap: 35px;
+        row-gap: 25px;
+    }
+
+    .collection-sticker {
+        width: 110px;
+        flex-basis: 110px;
+    }
 }

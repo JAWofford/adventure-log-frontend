@@ -1,26 +1,53 @@
-import mountainImage from "../../assets/Mountain.png";
-import './MountainSticker.css';
+import "./BeachSticker.css";
+import beachImage from "../../assets/Beach.png";
 
-export default function BeachSticker({ centerText, title, subtitle }) {
+function BeachSticker({ centerText, title, subtitle }) {
     return (
-           <div className="mountain-sticker">
+        <div className="beach-sticker">
+
             <img
-                src={mountainImage}
-                alt="A sticker image of a mountain with a sunrise between the peaks."
-                className="mountain-sticker-image"
+                src={beachImage}
+                alt="A souvenir sticker with a beach, palm trees and sunset over the ocean."
+                className="beach-sticker-image"
             />
 
-            <div className="mountain-center-text">
+            {/* Curved title */}
+            <svg
+                className="beach-title-svg"
+                viewBox="0 0 559 447"
+                aria-hidden="true"
+            >
+                <path
+                    id="beach-title-path"
+                   d="M 130 105 Q 280 30 430 105"
+                    fill="none"
+                />
+
+                <text
+                    className="beach-title"
+                    textAnchor="middle"
+                >
+                    <textPath
+                        href="#beach-title-path"
+                        startOffset="50%"
+                    >
+                        {title}
+                    </textPath>
+                </text>
+            </svg>
+
+            {/* Large center text */}
+            <div className="beach-center-text">
                 {centerText}
             </div>
 
-            <div className="mountain-title">
-                {title}
-            </div>
-
-            <div className="mountain-subtitle">
+            {/* Subtitle */}
+            <div className="beach-subtitle">
                 {subtitle}
             </div>
+
         </div>
     );
 }
+
+export default BeachSticker;

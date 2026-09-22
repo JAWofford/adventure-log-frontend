@@ -19,7 +19,7 @@ export default function TopNav() {
 
 
     return (
-        <div className="topnav">
+        <div className="topnav wrap">
             <div className="brand">
                 <span className="mark">A</span>Adventure&nbsp;Log
             </div>
@@ -61,8 +61,9 @@ export default function TopNav() {
                     ) : <Button
                         className="logout"
                         onClick={() => {
-                            closeMenu();
                             logout();
+                            closeMenu();
+                            
                         }}
                         label="Logout" />}
                 </div>

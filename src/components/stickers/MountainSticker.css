@@ -1,6 +1,6 @@
 .mountain-sticker {
     position: relative;
-    width: 300px;
+    width: 100%;
     display: block;
 }
 
@@ -10,6 +10,9 @@
     display: block;
 }
 
+/* using container queries to control font size
+ formula based on width set in StickerDispaly.css cqw = (px ÷ 200) × 100 */
+
 .mountain-center-text {
     position: absolute;
     top: 72%;
@@ -17,9 +20,9 @@
     transform: translate(-50%, -50%);
 
     font-family: Georgia, serif;
-    font-size: 38px;
+    font-size:  12cqw;
     font-weight: 900;
-    color: #1F4438;
+    color: var(--pine-dark);
     text-align: center;
 }
 
@@ -30,9 +33,9 @@
     transform: translateX(-50%);
 
     font-family: Georgia, serif;
-    font-size: 16px;
+    font-size: 5.5cqw;
     font-weight: 700;
-    color: #EAF0E6;
+    color: var(--cream);
     text-align: center;
     white-space: nowrap;
 }
@@ -44,8 +47,8 @@
     transform: translateX(-50%);
 
     font-family: Georgia, serif;
-    font-size: 12px;
+    font-size: 4cqw;
     font-weight: 700;
-    color: #EAF0E6;
+    color: var(--cream);
     text-align: center;
 }
