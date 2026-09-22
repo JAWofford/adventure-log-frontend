@@ -1,0 +1,65 @@
+/* ---design option thumbnails-- */
+.design-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.design-option {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: none;
+    padding: 6px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.design-option:hover {
+    transform: translateY(-3px);
+}
+
+.design-option.selected {
+    border-color: #E8552B;
+}
+
+.design-option svg {
+    width: 130px;
+    height: auto;
+}
+
+.design-option .mountain-sticker,
+.design-option .beach-sticker {
+    width: 130px;
+    container-type: inline-size;
+}
+
+/* ---page layout--- */
+.sticker-creator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.sticker-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sticker-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    container-type: inline-size;
+}
+
+@media (max-width: 600px) {
+    .sticker-creator-layout{
+        grid-template-columns: 1fr;
+    }
+
+    .sticker-controls{
+        align-items: center;
+    }
+}

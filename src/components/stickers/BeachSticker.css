@@ -1,0 +1,59 @@
+.beach-sticker {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.beach-sticker-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* SVG used only for the curved title */
+.beach-title-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+/* not using cqw here because this is inside svg */
+.beach-title {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    fill: black;
+}
+
+/* Large text in the cream section */
+/* using container query to size font based on width set in StickerDisplay.css */
+.beach-center-text {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: Georgia, serif;
+    font-size: 11cqw;
+    font-weight: 900;
+    color: var(--mustard);
+    -webkit-text-stroke: .350cqw black; /* Width and color of the outline */
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Smaller text below the large text */
+.beach-subtitle {
+    position: absolute;
+    top: 77.5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+    font-size: 6cqw;
+    font-weight: 700;
+    color: var(--denim);
+    text-align: center;
+    white-space: nowrap;
+}
