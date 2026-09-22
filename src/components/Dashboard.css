@@ -35,3 +35,7 @@
   border-bottom: 3px solid transparent;
   color: var(--ink-soft)
 }
+
+.app-status{
+  margin: 30px;
+}

@@ -1,17 +1,21 @@
 .topnav {
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
   z-index: 9999;
   background: var(--cream);
   border-bottom: 2px dashed var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 76px;
-  padding: 0 55px;
 }
+
+ .topnav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 55px;
+    }
 
 .brand {
   display: flex;
@@ -37,9 +41,9 @@
 }
 
 .nav-menu {
-    display: flex;
-    align-items: center;
-    flex: 1;
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .nav-app-links {
@@ -49,11 +53,11 @@
 }
 
 .nav-user-link {
-    display: flex;
+  display: flex;
 }
 
-.hamburger{
-  display:none;
+.hamburger {
+  display: none;
 }
 
 /* login link extra styling */
@@ -72,56 +76,56 @@
 /* Media Query */
 @media (max-width: 768px) {
 
-    .topnav {
-        padding: 0 25px;
-    }
+  .topnav {
+    padding: 0 25px;
+  }
 
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 24px;
-        padding: 0;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-         position: relative;
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
     z-index: 10000;
-    }
+  }
 
-    .hamburger span {
-        display: block;
-        width: 100%;
-        height: 3px;
-        background: var(--pine-dark);
-        border-radius: 2px;
-    }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--pine-dark);
+    border-radius: 2px;
+  }
 
-    .nav-menu {
-        display: none;
-    }
+  .nav-menu {
+    display: none;
+  }
 
-    .nav-menu.menu-open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 76px;
-        right: 20px;
-        background: var(--denim);
-        width: 170px;
-        padding: 20px;
-        border: 2px solid var(--line);
-        border-radius: 0 0 10px 10px ;
-        border-top: none;
-    }
+  .nav-menu.menu-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 76px;
+    right: 20px;
+    background: var(--denim);
+    width: 170px;
+    padding: 20px;
+    border: 2px solid var(--line);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+  }
 
-    .nav-app-links {
-        flex-direction: column;
-        gap: 15px;
-    }
+  .nav-app-links {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-    .nav-user-link {
-      margin-top: 15px;
-    }
+  .nav-user-link {
+    margin-top: 15px;
+  }
 }

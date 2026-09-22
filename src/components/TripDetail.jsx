@@ -1,6 +1,6 @@
 import useTripLog from '../hooks/useTripLog';
 import { useParams, useNavigate } from 'react-router-dom';
-import './TripDetail.css';
+import './Detail.css';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import { useState } from 'react';
@@ -76,12 +76,12 @@ export default function TripDetail() {
         <div>
             {!isEditing ? (
                 <div className="wrap">
-                    <div className="trip-detail">
+                    <div className="record-detail">
                         <div className="page-head">
                             <h2>{trip.tripName}</h2>
 
                         </div>
-                        <div className="trip-detail-subheading">
+                        <div className="record-detail-subheading">
                             {trip.startDate && trip.endDate && (
                                 <div className="trip-dates">{(formatDate(trip.startDate)).split(",")[0]} — {formatDate(trip.endDate)}</div>
                             )}
@@ -135,14 +135,14 @@ export default function TripDetail() {
                             title="Delete trip log" />
                             </div>
                         <div className="form-panel">
-                            <h3 className="trip-desc-title">Description/Notes:</h3>
-                            <div className="trip-desc">{trip.tripDescription}</div>
+                            <h3 className="record-desc-title">Description/Notes:</h3>
+                            <div className="record-desc">{trip.tripDescription}</div>
                         </div>
-                        <div className="route-legs">
+                        <div className="addon-sections">
                             {trip.routeLegs.map((leg) => (
-                                <div key={leg.legId} className="leg-display">
+                                <div key={leg.legId} className="addon-display">
                                     <span className="mark">{leg.legOrder}</span>
-                                    <div className="log-detail-panel">
+                                    <div className="addon-detail-panel">
                                         <h3>{leg.legTitle}</h3>
                                         {leg.legNotes && <p>{leg.legNotes}</p>}
                                     </div>

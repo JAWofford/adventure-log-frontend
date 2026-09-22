@@ -80,7 +80,7 @@ export default function RegistrationForm() {
         {/* show registration form error here if there is one. */}
         {regError && <p className="error">{regError}</p>}
         <div className="field">
-          <label>Username <span className="required">*</span></label>
+          <label>Username (no spaces) <span className="required">*</span></label>
           <input
             type="text"
             id="userName"

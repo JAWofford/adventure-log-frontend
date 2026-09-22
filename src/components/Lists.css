@@ -1,11 +1,15 @@
-.trip-grid {
+.list-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
 }
 
+.list-grid > * {
+    min-width:0;
+}
+
 @media (max-width: 500px) {
-    .trip-grid {
+    .list-grid {
         grid-template-columns: 1fr;
     }
 }

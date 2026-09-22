@@ -48,32 +48,37 @@
 .card-title {
     font-size: 1.05rem;
     margin-bottom: 4px;
+    min-height: calc(1.05rem * 1.15 * 2);
+    line-height: 1.15;
+
 }
 
 .card .trip-dates {
     font-family: var(--font-mono);
     font-size: .75rem;
     margin-bottom: 10px;
-    color: var(--ink-soft);
+    color: var(--denim-dark);
+    font-weight: 600;
 }
 
-.card .card-leg-count {
+.card .card-addon-count {
     font-family: var(--font-mono);
     font-size: .75rem;
     margin-bottom: 10px;
     color: var(--highway-dark);
     font-weight: bold;
     margin-left: auto;
+    flex-shrink: 0;
 }
 
-.card .trip-desc {
+.card .record-desc {
     font-size: .9rem;
     margin-bottom: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     /* show only three lines */
     -webkit-line-clamp: 3;
-     line-height: 1.5;
+    line-height: 1.5;
     line-clamp: 3;
     overflow: hidden;
     /* show at least three lines worth of space */
@@ -82,4 +87,17 @@
 
 .card .subheading {
     display: flex;
+}
+
+.card .review-location{
+    color: var(--denim-dark);
+    font-weight: 600;
+}
+
+.card .subheading>div:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
 }

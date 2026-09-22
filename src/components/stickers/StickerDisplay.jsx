@@ -28,6 +28,13 @@ const storageKey = 'adLogStickers';
     </div>
   )
 
+  //FUTURE: investigate using ProtectedRoute
+  if (!user) return (
+  <div className="app-status form-panel wrapa">
+      <p>Please log in to see your stickers.</p>
+    </div>
+  )
+
     //FUTURE: Create one reusable sticker component.
     return (
         <div className="sticker-display wrap">

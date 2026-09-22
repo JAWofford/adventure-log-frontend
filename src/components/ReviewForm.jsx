@@ -89,7 +89,8 @@ export default function ReviewForm() {
                 };
                 await addReviewStay(createdReview.campgroundId, cleanedStay)
             }
-            navigate("/dashboard");
+            
+            navigate(`/review/${createdReview.campgroundId}`);
         } catch (err) {
             if (err instanceof TypeError) {
                 setReviewError("We couldn't connect to the server. Please try again in a moment.")

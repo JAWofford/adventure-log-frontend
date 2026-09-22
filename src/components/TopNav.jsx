@@ -19,68 +19,69 @@ export default function TopNav() {
 
 
     return (
-        <div className="topnav wrap">
-            <div className="brand">
-                <span className="mark">A</span>Adventure&nbsp;Log
-            </div>
-
-            {/* Navigation */}
-            <div className={`nav-menu ${menuOpen ? "menu-open" : ""}`}>
-                <div className="nav-app-links">
-                    <AppLink
-                        to="/"
-                        className="home"
-                        label="Home"
-                        onClick={closeMenu} />
-                    {user && (
-                        <>
-                            <AppLink
-                                to="/dashboard"
-                                className="dashboard"
-                                label="Dashboard"
-                                onClick={closeMenu} />
-                            <AppLink
-                                to="/stickers"
-                                className="sticker-btn"
-                                label="Stickers"
-                                onClick={closeMenu} />
-                        </>
-                    )}
-
+        <div className="topnav">
+            <div className="topnav-inner wrap">
+                <div className="brand">
+                    <span className="mark">A</span>Adventure&nbsp;Log
                 </div>
 
-                {/* Login / Logout */}
-                <div className="nav-user-link">
-                    {!user ? (
+                {/* Navigation */}
+                <div className={`nav-menu ${menuOpen ? "menu-open" : ""}`}>
+                    <div className="nav-app-links">
                         <AppLink
-                            to="/login"
-                            className="login"
-                            label="Login"
+                            to="/"
+                            className="home"
+                            label="Home"
                             onClick={closeMenu} />
+                        {user && (
+                            <>
+                                <AppLink
+                                    to="/dashboard"
+                                    className="dashboard"
+                                    label="Dashboard"
+                                    onClick={closeMenu} />
+                                <AppLink
+                                    to="/stickers"
+                                    className="sticker-btn"
+                                    label="Stickers"
+                                    onClick={closeMenu} />
+                            </>
+                        )}
 
-                    ) : <Button
-                        className="logout"
-                        onClick={() => {
-                            logout();
-                            closeMenu();
-                            
-                        }}
-                        label="Logout" />}
+                    </div>
+
+                    {/* Login / Logout */}
+                    <div className="nav-user-link">
+                        {!user ? (
+                            <AppLink
+                                to="/login"
+                                className="login"
+                                label="Login"
+                                onClick={closeMenu} />
+
+                        ) : <Button
+                            className="logout"
+                            onClick={() => {
+                                logout();
+                                closeMenu();
+
+                            }}
+                            label="Logout" />}
+                    </div>
                 </div>
+
+                {/* Hamburger */}
+                <button
+                    className="hamburger"
+                    onClick={toggleMenu}
+                    aria-label="Toggle navigation menu"
+                    aria-expanded={menuOpen}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-
-            {/* Hamburger */}
-            <button
-                className="hamburger"
-                onClick={toggleMenu}
-                aria-label="Toggle navigation menu"
-                aria-expanded={menuOpen}
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
         </div>
 
 

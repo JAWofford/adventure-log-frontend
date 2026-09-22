@@ -1,4 +1,4 @@
-.trip-detail-subheading {
+.record-detail-subheading {
     display: flex;
 }
 
@@ -11,7 +11,7 @@
 
 
 
-.trip-detail .trip-dates {
+.record-detail .trip-dates {
     font-family: var(--font-mono);
     font-size: 16px;
     text-transform: uppercase;
@@ -21,7 +21,7 @@
     font-weight: 700;
 }
 
-.trip-detail .route-divider {
+.record-detail .route-divider {
     margin: 16px 0 28px;
 }
 
@@ -40,12 +40,12 @@
     border-radius: 15px;
 }
 
-.route-legs {
+.addon-sections {
     position: relative;
     margin: 25px 0;
 }
 
-.leg-display::before {
+.addon-display::before {
     content: "";
     position: absolute;
     left: 15px;
@@ -54,7 +54,7 @@
     border-left: 3px dashed var(--line);
 }
 
-.leg-display {
+.addon-display {
     display: flex;
     align-items: flex-start;
     gap: 5px;
@@ -62,17 +62,22 @@
     margin: 20px;
 }
 
-.leg-display .mark {
+.addon-display .mark {
     flex: 0 0 auto;
     position: relative;
     z-index: 1;
 }
 
-.log-detail-panel {
+.addon-detail-panel {
     flex: 1;
     background: var(--card);
     border: 2px solid var(--ink);
     border-radius: var(--radius-lg);
     padding: 34px 34px 10px 34px;
     box-shadow: var(--shadow);
+}
+
+.site-num{
+    font-weight: 600;
+    color: var(--highway-dark);
 }

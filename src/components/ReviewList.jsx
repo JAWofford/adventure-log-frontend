@@ -2,7 +2,7 @@
 
 import useReviews from '../hooks/useReviews.js'
 import ReviewCard from './ReviewCard.jsx';
-import './TripList.css';
+import './Lists.css';
 
 export default function ReviewList() {
 
@@ -29,7 +29,7 @@ export default function ReviewList() {
         ): (
           <div>
             <p>{reviews.length} review(s) found.</p>
-            <div className="trip-grid">
+            <div className="list-grid">
               {reviews.map(review =>(
                 <ReviewCard key={review.campgroundId} review={review}/>
               ))}
