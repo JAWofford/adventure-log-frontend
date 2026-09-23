@@ -50,7 +50,7 @@ export default function TopNav() {
 
                     </div>
 
-                    {/* Login / Logout */}
+                    {/* Login / Logout  conditionally rendered based on user state*/}
                     <div className="nav-user-link">
                         {!user ? (
                             <AppLink

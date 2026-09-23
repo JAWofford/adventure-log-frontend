@@ -21,8 +21,9 @@ function Dashboard() {
   )
   
 //FUTURE: investigate using ProtectedRoute
+//handle if user accesses this page without authenticaiton ie. direct url
   if (!user) return (
-  <div className="app-status form-panel wrapa">
+  <div className="app-status form-panel wrap">
       <p>Please log in to see the Dashboard</p>
     </div>
   )

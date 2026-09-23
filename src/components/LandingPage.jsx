@@ -19,7 +19,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="hero-image-wrap">
-                <img className="landing-image" src={landingImage} alt="A couple standing in front of a motorhome." />
+                <img className="landing-image" src={landingImage} alt="Clipart image of rolling hills and a river with a motorhome traveling down the highway." />
                 </div>
             </div>
             <section className="wrap features" id="features">

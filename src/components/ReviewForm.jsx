@@ -89,7 +89,7 @@ export default function ReviewForm() {
                 };
                 await addReviewStay(createdReview.campgroundId, cleanedStay)
             }
-            
+
             navigate(`/review/${createdReview.campgroundId}`);
         } catch (err) {
             if (err instanceof TypeError) {
@@ -124,34 +124,34 @@ export default function ReviewForm() {
                         />
                     </div>
                     <div className="field-row">
-                    <div className="field">
-                        <label>Location:</label>
-                        <input
-                            type="text"
-                            id="location"
-                            name="location"
-                            value={reviewData.location}
-                            onChange={handleChange}
-                            maxLength={250}
-                        />
-                    </div>
-                    <div className="field">
-                        <label>State:</label>
-                        <select
-                            name="state"
-                            id="state"
-                            value={reviewData.state}
-                            onChange={handleChange}
-                        >
-                            <option value="">Select a state</option>
-
-                            {states.map((state) => (
-                                <option key={state.abbreviation} value={state.abbreviation}>
-                                    {state.name} ({state.abbreviation})
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                        <div className="field">
+                            <label>Location:</label>
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                value={reviewData.location}
+                                onChange={handleChange}
+                                maxLength={250}
+                            />
+                        </div>
+                        <div className="field">
+                            <label>State:</label>
+                            <select
+                                name="state"
+                                id="state"
+                                value={reviewData.state}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select a state</option>
+                                {/* use states.js to create dropdown options. */}
+                                {states.map((state) => (
+                                    <option key={state.abbreviation} value={state.abbreviation}>
+                                        {state.name} ({state.abbreviation})
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                     <div className="privacy-section">
                         <h1>Who Can See This <span className="required">*</span></h1>
@@ -213,19 +213,19 @@ export default function ReviewForm() {
                         onClick={addStay}
                         label="+ Add another stay"
                     />
-                    </div>
+                </div>
 
-                    <div className="review-form-buttons">
-                        <Button
-                            className="cancel-button"
-                            label="Cancel"
-                            onClick={handleCancel} />
-                        <Button
-                            className="orange-button"
-                            type="submit"
-                            label="Save Campground Review" />
-                    </div>
-                
+                <div className="review-form-buttons">
+                    <Button
+                        className="cancel-button"
+                        label="Cancel"
+                        onClick={handleCancel} />
+                    <Button
+                        className="orange-button"
+                        type="submit"
+                        label="Save Campground Review" />
+                </div>
+
             </form>
 
         </div>
