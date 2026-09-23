@@ -88,9 +88,9 @@ export default function TripLogForm({ existingTrip, onSaveSuccess, onCancel }) {
         }
 
         try {
-            //Edit Mode: PUT to updatethe existing trip(uses tripId already in object in state)
+            //Edit Mode: PUT to update the existing trip(uses tripId already in object in state)
             //Create Mode: POST to create a brand-new trip and get back its generated tripId.
-            const savedTrip = existingTrip
+            let savedTrip = existingTrip
                 ? await updateLog(existingTrip.tripId, cleanedData)
                 : await createLog(cleanedData);
 
@@ -103,12 +103,12 @@ export default function TripLogForm({ existingTrip, onSaveSuccess, onCancel }) {
             for (const leg of validLegs) {
                 //determine which api method to call based on legId (only existing legs have this value)
                 if ("legId" in leg) {
-                    await updateRouteLeg(savedTrip.tripId, leg.legId, leg)
+                    savedTrip = await updateRouteLeg(savedTrip.tripId, leg.legId, leg)
                 } else {
-                    await addRouteLeg(savedTrip.tripId, leg)
+                    savedTrip = await addRouteLeg(savedTrip.tripId, leg)
                 }
             }
-            existingTrip ? onSaveSuccess(savedTrip) : navigate('/dashboard');
+            existingTrip ? onSaveSuccess(savedTrip) : navigate(`/trip/${savedTrip.tripId}`);
 
         } catch (err) {
             if (err instanceof TypeError) {

@@ -1,4 +1,9 @@
 /* makes room for topNav to be fixed */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+}
 main {
   padding-top: 76px;
 }
@@ -187,6 +192,10 @@ textarea:focus {
 
 .dashed-line {
   border-bottom: 2px dashed var(--line);
+}
+
+.app-footer {
+    margin-top: auto;
 }
 
 /* ---------Media Queries--------- */

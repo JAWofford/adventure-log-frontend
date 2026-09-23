@@ -19,6 +19,13 @@ function Dashboard() {
       <p>Loading…</p>
     </div>
   )
+  
+//FUTURE: investigate using ProtectedRoute
+  if (!user) return (
+  <div className="app-status form-panel wrapa">
+      <p>Please log in to see the Dashboard</p>
+    </div>
+  )
 
   return (
     <div className="wrap">

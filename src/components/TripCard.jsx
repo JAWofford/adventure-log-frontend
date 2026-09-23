@@ -1,4 +1,4 @@
-import './TripCard.css';
+import './Cards.css';
 import { Link } from 'react-router-dom';
 
 export default function TripCard({ trip }) {
@@ -27,9 +27,9 @@ export default function TripCard({ trip }) {
                         <div className="trip-dates">{formatDate(trip.startDate)}</div>
                     )}
 
-                    {trip.routeLegs.length !== 0 && <div className="card-leg-count">{trip.routeLegs.length} legs</div>}
+                    {trip.routeLegs.length !== 0 && <div className="card-addon-count">{trip.routeLegs.length} legs</div>}
                 </div>
-                {trip.tripDescription && <div className="trip-desc">{trip.tripDescription}</div>}
+                {trip.tripDescription && <div className="record-desc">{trip.tripDescription}</div>}
                 <div className="stamp">{trip.privacy}</div>
 
             </div>

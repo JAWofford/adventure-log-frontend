@@ -1,7 +1,7 @@
 
 import { useParams } from 'react-router-dom';
 import useReview from '../hooks/useReview.js'
-import './TripDetail.css'
+import './Detail.css'
 import { Link } from 'react-router-dom';
 
 export default function ReviewDetail() {
@@ -33,28 +33,29 @@ export default function ReviewDetail() {
     //main return
     return (
           <div className="wrap">
-            <div className="trip-detail">
+            <div className="record-detail">
                 <div className="page-head">
                     <h2>{review.campgroundName}</h2>
 
                 </div>
-                <div className="trip-detail-subheading">
+                <div className="record-detail-subheading">
                     {review.location} -- {review.state}
                      <Link to="/dashboard" state={{ initialTab: "reviews" }} className="back-link">← Back</Link>
                 </div>
                 <div className="route-divider"><span className="pin"></span> Campground Review <span className="pin"></span></div>
+               
                 <div className="form-panel">
-                    <h3 className="trip-desc-title">Description/Notes:</h3>
-                    <div className="trip-desc">{review.campgroundNotes}</div>
+                    <h3 className="record-desc-title">Description/Notes:</h3>
+                    <div className="record-desc">{review.campgroundNotes}</div>
                 </div>
-                <div className="route-legs">
+                <div className="addon-sections">
                     {review.reviewStays.map((stay) => (
-                        <div key={stay.stayId} className="leg-display">
-                            <div className="log-detail-panel">
+                        <div key={stay.stayId} className="addon-display">
+                            <span className="mark">★</span>
+                            <div className="addon-detail-panel">
                                 {stay.dateStayed && <h3>Date Stayed: {formatDate(stay.dateStayed)}</h3>}
-                                {stay.siteNumber && <h3>Site Number: {stay.siteNumber}</h3>}
-                                {stay.stayNotes && <h3>Notes: {stay.stayNotes}</h3>}
-                                <div className="dashed-line"></div>
+                                {stay.siteNumber && <p className="site-num">Site Number: {stay.siteNumber}</p>}
+                                {stay.stayNotes && <p>Notes: {stay.stayNotes}</p>}
                             </div>
                         </div>
                     ))}

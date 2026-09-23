@@ -1,4 +1,4 @@
-import './TripCard.css';
+import './Cards.css';
 import { Link } from 'react-router-dom';
 
 export default function ReviewCard({ review }) {
@@ -9,11 +9,11 @@ export default function ReviewCard({ review }) {
                 <h1 className="card-title">{review.campgroundName}</h1>
                 {/*Both dates: show start without year + full end date  */}
                 <div className="subheading">
-                    <div>{review.location} -- {review.state}</div>
+                    <div className="review-location">{review.location} -- {review.state}</div>
 
-                    {review.reviewStays.length !== 0 && <div className="card-leg-count">{review.reviewStays.length} visits</div>}
+                    {review.reviewStays.length !== 0 && <div className="card-addon-count">{review.reviewStays.length} visits</div>}
                 </div>
-                {review.campgroundNotes && <div className="trip-desc">{review.campgroundNotes}</div>}
+                {review.campgroundNotes && <div className="record-desc">{review.campgroundNotes}</div>}
                 <div className="stamp">{review.privacy}</div>
 
             </div>

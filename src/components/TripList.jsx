@@ -1,6 +1,6 @@
 import useTripLogs from '../hooks/useTripLogs.js'
 import TripCard from './TripCard.jsx';
-import './TripList.css';
+import './Lists.css';
 
 export default function TripList() {
 
@@ -27,7 +27,7 @@ export default function TripList() {
         ): (
           <div>
             <p>{trips.length} trip(s) found.</p>
-            <div className="trip-grid">
+            <div className="list-grid">
               {trips.map(trip =>(
                 <TripCard key={trip.tripId} trip={trip}/>
               ))}
