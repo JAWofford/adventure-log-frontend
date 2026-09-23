@@ -7,7 +7,7 @@ export default function ReviewCard({ review }) {
         <Link to={`/review/${review.campgroundId}`} className="card-link">
             <div className="card">
                 <h1 className="card-title">{review.campgroundName}</h1>
-                {/*Both dates: show start without year + full end date  */}
+                
                 <div className="subheading">
                     <div className="review-location">{review.location} -- {review.state}</div>
 

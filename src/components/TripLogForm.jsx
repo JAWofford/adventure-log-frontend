@@ -134,10 +134,10 @@ export default function TripLogForm({ existingTrip, onSaveSuccess, onCancel }) {
             <div className="page-head">
                 <h1>{existingTrip ? (
                     <>
-                    <span className='edit-title-span'>Edit Trip:   </span>
-                    {existingTrip.tripName}
+                        <span className='edit-title-span'>Edit Trip:   </span>
+                        {existingTrip.tripName}
                     </>
-                    )  : "New Trip Log"}</h1>
+                ) : "New Trip Log"}</h1>
                 <p>The scrapbook version — what you'd want to remember next time you plan a trip like this one.</p>
             </div>
 
@@ -239,17 +239,17 @@ export default function TripLogForm({ existingTrip, onSaveSuccess, onCancel }) {
                     onClick={addLeg}
                     label="+ Add another leg"
                 />
-                 <div className="log-form-buttons">
+                <div className="log-form-buttons">
                     <Button
                         className="cancel-button"
                         label="Cancel"
-                        onClick={handleCancel} />                 
+                        onClick={handleCancel} />
                     <Button
                         className="orange-button"
                         type="submit"
                         label="Save Trip Log" />
                 </div>
-               
+
             </form >
         </div >
     )

@@ -10,6 +10,7 @@ export default function StickerDisplay() {
     
 const storageKey = 'adLogStickers';
 
+//FUTURE:  Write this to backend DB.
 //get sticker array from local storage if it exists
     const [stickers, setStickers] = useState(() => {
         const savedItems = localStorage.getItem(storageKey);
@@ -35,7 +36,7 @@ const storageKey = 'adLogStickers';
     </div>
   )
 
-    //FUTURE: Create one reusable sticker component.
+    //FUTURE: Possibly Create one reusable sticker component.
     return (
         <div className="sticker-display wrap">
             <div className="page-head">
@@ -43,6 +44,7 @@ const storageKey = 'adLogStickers';
                 <p>Every place you've stuck a pin {user.displayName}.
                     The back-window decal, gone digital. </p>
             </div>
+            {/* Render each saved sticker using the component for its selected design */}
             <div className="sticker-collection">
                 {stickers.map(sticker => {
                     const StickerComponent = stickerDesigns[sticker.design];

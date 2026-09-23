@@ -30,7 +30,7 @@ Used for container queries (cqw) on sticker component font sizing. */
     width: 100%;
 }
 
-/* ----sticker size/rotation pattern ---- */ */
+/* ----sticker size/rotation pattern ---- */
 
 .collection-sticker:nth-child(6n + 1) {
     transform: rotate(-5deg);

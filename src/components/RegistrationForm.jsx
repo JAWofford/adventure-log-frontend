@@ -56,6 +56,7 @@ export default function RegistrationForm() {
     const registrationData = { ...formData };
     delete registrationData.confirmPassword;
 
+    //create user record in Db, update auth state with saved user, navigate to dashboard.
     try {
       const registeredUser = await registerUser(registrationData);
       setUser(registeredUser);

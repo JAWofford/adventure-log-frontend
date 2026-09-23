@@ -26,6 +26,7 @@ export default function Login() {
         }));
     }
 
+    // Log the user in, update auth state, and redirect to the dashboard — or show an error if it fails.
     const handleSubmit = async (event) => {
         event.preventDefault();
         setLoginError("");
@@ -82,18 +83,18 @@ export default function Login() {
                             label="Login" />
                     </div>
                 </form>
-                    <div className="side-bar">
-                        <h3>New Here?</h3>
-                            <p>Ready to keep track of the places you've been and the journeys still ahead? Create your Adventure Log to save your trips, 
-                            share campground reviews, and collect memories along the way.
-                        </p>
+                <div className="side-bar">
+                    <h3>New Here?</h3>
+                    <p>Ready to keep track of the places you've been and the journeys still ahead? Create your Adventure Log to save your trips,
+                        share campground reviews, and collect memories along the way.
+                    </p>
                     <AppLink
                         to="/register"
                         className="register"
                         label="Start Your Adventure"
                     />
-                    </div>
-               
+                </div>
+
 
             </div>
 
